@@ -1,0 +1,3718 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DataStructures</name>
+    </assembly>
+    <members>
+        <member name="T:DataStructures.AATree.AaTree`1">
+            <summary>
+                A simple self-balancing binary search tree.
+            </summary>
+            <remarks>
+                AA Trees are a form of self-balancing binary search tree named after their inventor
+                Arne Anderson. AA Trees are designed to be simple to understand and implement.
+                This is accomplished by limiting how nodes can be added to the tree.
+                This simplifies rebalancing operations.
+                More information: https://en.wikipedia.org/wiki/AA_tree .
+            </remarks>
+            <typeparam name="TKey">The type of key for the AA tree.</typeparam>
+        </member>
+        <member name="F:DataStructures.AATree.AaTree`1.comparer">
+            <summary>
+                The comparer function to use to compare the keys.
+            </summary>
+        </member>
+        <member name="M:DataStructures.AATree.AaTree`1.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:DataStructures.AATree.AaTree`1" /> class.
+            </summary>
+        </member>
+        <member name="M:DataStructures.AATree.AaTree`1.#ctor(System.Collections.Generic.Comparer{`0})">
+            <summary>
+                Initializes a new instance of the <see cref="T:DataStructures.AATree.AaTree`1" /> class with a custom comparer.
+            </summary>
+            <param name="customComparer">The custom comparer to use to compare keys.</param>
+        </member>
+        <member name="P:DataStructures.AATree.AaTree`1.Root">
+            <summary>
+                Gets the root of the tree.
+            </summary>
+        </member>
+        <member name="P:DataStructures.AATree.AaTree`1.Count">
+            <summary>
+                Gets the number of elements in the tree.
+            </summary>
+        </member>
+        <member name="M:DataStructures.AATree.AaTree`1.Add(`0)">
+            <summary>
+                Add a single element to the tree.
+            </summary>
+            <param name="key">The element to add to the tree.</param>
+        </member>
+        <member name="M:DataStructures.AATree.AaTree`1.AddRange(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+                Add multiple elements to the tree.
+            </summary>
+            <param name="keys">The elements to add to the tree.</param>
+        </member>
+        <member name="M:DataStructures.AATree.AaTree`1.Remove(`0)">
+            <summary>
+                Remove a single element from the tree.
+            </summary>
+            <param name="key">Element to remove.</param>
+        </member>
+        <member name="M:DataStructures.AATree.AaTree`1.Contains(`0)">
+            <summary>
+                Checks if the specified element is in the tree.
+            </summary>
+            <param name="key">The element to look for.</param>
+            <returns>true if the element is in the tree, false otherwise.</returns>
+        </member>
+        <member name="M:DataStructures.AATree.AaTree`1.GetMax">
+            <summary>
+                Gets the largest element in the tree. (ie. the element in the right most node).
+            </summary>
+            <returns>The largest element in the tree according to the stored comparer.</returns>
+            <exception cref="T:System.InvalidOperationException">Thrown if the tree is empty.</exception>
+        </member>
+        <member name="M:DataStructures.AATree.AaTree`1.GetMin">
+            <summary>
+                Gets the smallest element in the tree. (ie. the element in the left most node).
+            </summary>
+            <returns>The smallest element in the tree according to the stored comparer.</returns>
+            <throws>InvalidOperationException if the tree is empty.</throws>
+        </member>
+        <member name="M:DataStructures.AATree.AaTree`1.GetKeysInOrder">
+            <summary>
+                Gets all the elements in the tree in in-order order.
+            </summary>
+            <returns>Sequence of elements in in-order order.</returns>
+        </member>
+        <member name="M:DataStructures.AATree.AaTree`1.GetKeysPreOrder">
+            <summary>
+                Gets all the elements in the tree in pre-order order.
+            </summary>
+            <returns>Sequence of elements in pre-order order.</returns>
+        </member>
+        <member name="M:DataStructures.AATree.AaTree`1.GetKeysPostOrder">
+            <summary>
+                Gets all the elements in the tree in post-order order.
+            </summary>
+            <returns>Sequence of elements in post-order order.</returns>
+        </member>
+        <member name="M:DataStructures.AATree.AaTree`1.Add(`0,DataStructures.AATree.AaTreeNode{`0})">
+            <summary>
+                Recursive function to add an element to the tree.
+            </summary>
+            <param name="key">The element to add.</param>
+            <param name="node">The node to search for a empty spot.</param>
+            <returns>The node with the added element.</returns>
+            <exception cref="T:System.ArgumentException">Thrown if key is already in the tree.</exception>
+        </member>
+        <member name="M:DataStructures.AATree.AaTree`1.Remove(`0,DataStructures.AATree.AaTreeNode{`0})">
+            <summary>
+                Recursive function to remove an element from the tree.
+            </summary>
+            <param name="key">The element to remove.</param>
+            <param name="node">The node to search from.</param>
+            <returns>The node with the specified element removed.</returns>
+        </member>
+        <member name="M:DataStructures.AATree.AaTree`1.Contains(`0,DataStructures.AATree.AaTreeNode{`0})">
+            <summary>
+                Recursive function to check if the element exists in the tree.
+            </summary>
+            <param name="key">The element to check for.</param>
+            <param name="node">The node to search from.</param>
+            <returns>true if the element exists in the tree, false otherwise.</returns>
+        </member>
+        <member name="M:DataStructures.AATree.AaTree`1.GetMax(DataStructures.AATree.AaTreeNode{`0})">
+            <summary>
+                Recursive to find the maximum/right-most element.
+            </summary>
+            <param name="node">The node to traverse from.</param>
+            <returns>The node with the maximum/right-most element.</returns>
+        </member>
+        <member name="M:DataStructures.AATree.AaTree`1.GetMin(DataStructures.AATree.AaTreeNode{`0})">
+            <summary>
+                Recursive to find the minimum/left-most element.
+            </summary>
+            <param name="node">The node to traverse from.</param>
+            <returns>The node with the minimum/left-most element.</returns>
+        </member>
+        <member name="M:DataStructures.AATree.AaTree`1.Skew(DataStructures.AATree.AaTreeNode{`0})">
+            <summary>
+                Remove right-horizontal links and replaces them with left-horizontal links.
+                Accomplishes this by performing a right rotation.
+            </summary>
+            <param name="node">The node to rebalance from.</param>
+            <returns>The rebalanced node.</returns>
+        </member>
+        <member name="M:DataStructures.AATree.AaTree`1.Split(DataStructures.AATree.AaTreeNode{`0})">
+            <summary>
+                Reduces the number of right-horizontal links.
+                Accomplishes this by performing a left rotation, and incrementing level.
+            </summary>
+            <param name="node">The node to rebalance from.</param>
+            <returns>The rebalanced node.</returns>
+        </member>
+        <member name="M:DataStructures.AATree.AaTree`1.DecreaseLevel(DataStructures.AATree.AaTreeNode{`0})">
+            <summary>
+                Decreases the level of node if necessary.
+            </summary>
+            <param name="node">The node to decrease level from.</param>
+            <returns>The node with modified level.</returns>
+        </member>
+        <member name="T:DataStructures.AATree.AaTreeNode`1">
+            <summary>
+                Generic node class for AATree.
+            </summary>
+            <typeparam name="TKey">Type of key for node.</typeparam>
+        </member>
+        <member name="M:DataStructures.AATree.AaTreeNode`1.#ctor(`0,System.Int32)">
+            <summary>
+                Initializes a new instance of the <see cref="T:DataStructures.AATree.AaTreeNode`1" /> class.
+            </summary>
+            <param name="key">The initial key of this node.</param>
+            <param name="level">The level of this node. See <see cref="T:DataStructures.AATree.AaTree`1" /> for more details.</param>
+        </member>
+        <member name="P:DataStructures.AATree.AaTreeNode`1.Key">
+            <summary>
+                Gets or Sets key for this node.
+            </summary>
+        </member>
+        <member name="P:DataStructures.AATree.AaTreeNode`1.Level">
+            <summary>
+                Gets or Sets level for this node.
+            </summary>
+        </member>
+        <member name="P:DataStructures.AATree.AaTreeNode`1.Left">
+            <summary>
+                Gets or sets the left subtree of this node.
+            </summary>
+        </member>
+        <member name="P:DataStructures.AATree.AaTreeNode`1.Right">
+            <summary>
+                Gets or sets the right subtree of this node.
+            </summary>
+        </member>
+        <member name="T:DataStructures.AVLTree.AvlTree`1">
+            <summary>
+                A simple self-balancing binary tree.
+            </summary>
+            <remarks>
+                An AVL tree is a self-balancing binary search tree (BST) named after
+                its inventors: Adelson, Velsky, and Landis. It is the first self-
+                balancing BST invented. The primary property of an AVL tree is that
+                the height of both child subtrees for any node only differ by one.
+                Due to the balanced nature of the tree, its time complexities for
+                insertion, deletion, and search all have a worst-case time
+                complexity of O(log n). Which is an improvement over the worst-case
+                O(n) for a regular BST.
+                See https://en.wikipedia.org/wiki/AVL_tree for more information.
+                Visualizer: https://visualgo.net/en/bst.
+            </remarks>
+            <typeparam name="TKey">Type of key for the tree.</typeparam>
+        </member>
+        <member name="P:DataStructures.AVLTree.AvlTree`1.Count">
+            <summary>
+                Gets the number of nodes in the tree.
+            </summary>
+        </member>
+        <member name="F:DataStructures.AVLTree.AvlTree`1.comparer">
+            <summary>
+                Comparer to use when comparing key values.
+            </summary>
+        </member>
+        <member name="F:DataStructures.AVLTree.AvlTree`1.root">
+            <summary>
+                Reference to the root node.
+            </summary>
+        </member>
+        <member name="M:DataStructures.AVLTree.AvlTree`1.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:DataStructures.AVLTree.AvlTree`1"/>
+                class.
+            </summary>
+        </member>
+        <member name="M:DataStructures.AVLTree.AvlTree`1.#ctor(System.Collections.Generic.Comparer{`0})">
+            <summary>
+                Initializes a new instance of the <see cref="T:DataStructures.AVLTree.AvlTree`1"/>
+                class using the specified comparer.
+            </summary>
+            <param name="customComparer">
+            Comparer to use when comparing keys.
+            </param>
+        </member>
+        <member name="M:DataStructures.AVLTree.AvlTree`1.Add(`0)">
+            <summary>
+                Add a single node to the tree.
+            </summary>
+            <param name="key">Key value to add.</param>
+        </member>
+        <member name="M:DataStructures.AVLTree.AvlTree`1.AddRange(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+                Add multiple nodes to the tree.
+            </summary>
+            <param name="keys">Key values to add.</param>
+        </member>
+        <member name="M:DataStructures.AVLTree.AvlTree`1.Remove(`0)">
+            <summary>
+                Remove a node from the tree.
+            </summary>
+            <param name="key">Key value to remove.</param>
+        </member>
+        <member name="M:DataStructures.AVLTree.AvlTree`1.Contains(`0)">
+            <summary>
+                Check if given node is in the tree.
+            </summary>
+            <param name="key">Key value to search for.</param>
+            <returns>Whether or not the node is in the tree.</returns>
+        </member>
+        <member name="M:DataStructures.AVLTree.AvlTree`1.GetMin">
+            <summary>
+                Get the minimum value in the tree.
+            </summary>
+            <returns>Minimum value in tree.</returns>
+        </member>
+        <member name="M:DataStructures.AVLTree.AvlTree`1.GetMax">
+            <summary>
+                Get the maximum value in the tree.
+            </summary>
+            <returns>Maximum value in tree.</returns>
+        </member>
+        <member name="M:DataStructures.AVLTree.AvlTree`1.GetKeysInOrder">
+            <summary>
+                Get keys in order from smallest to largest as defined by the
+                comparer.
+            </summary>
+            <returns>Keys in tree in order from smallest to largest.</returns>
+        </member>
+        <member name="M:DataStructures.AVLTree.AvlTree`1.GetKeysPreOrder">
+            <summary>
+                Get keys in the pre-order order.
+            </summary>
+            <returns>Keys in pre-order order.</returns>
+        </member>
+        <member name="M:DataStructures.AVLTree.AvlTree`1.GetKeysPostOrder">
+            <summary>
+                Get keys in the post-order order.
+            </summary>
+            <returns>Keys in the post-order order.</returns>
+        </member>
+        <member name="M:DataStructures.AVLTree.AvlTree`1.Rebalance(DataStructures.AVLTree.AvlTreeNode{`0})">
+            <summary>
+                Helper function to rebalance the tree so that all nodes have a
+                balance factor in the range [-1, 1].
+            </summary>
+            <param name="node">Node to rebalance.</param>
+            <returns>New node that has been rebalanced.</returns>
+        </member>
+        <member name="M:DataStructures.AVLTree.AvlTree`1.RotateLeft(DataStructures.AVLTree.AvlTreeNode{`0})">
+            <summary>
+                Perform a left (counter-clockwise) rotation.
+            </summary>
+            <param name="node">Node to rotate about.</param>
+            <returns>New node with rotation applied.</returns>
+        </member>
+        <member name="M:DataStructures.AVLTree.AvlTree`1.RotateRight(DataStructures.AVLTree.AvlTreeNode{`0})">
+            <summary>
+                Perform a right (clockwise) rotation.
+            </summary>
+            <param name="node">Node to rotate about.</param>
+            <returns>New node with rotation applied.</returns>
+        </member>
+        <member name="M:DataStructures.AVLTree.AvlTree`1.GetMin(DataStructures.AVLTree.AvlTreeNode{`0})">
+            <summary>
+                Helper function to get node instance with minimum key value
+                in the specified subtree.
+            </summary>
+            <param name="node">Node specifying root of subtree.</param>
+            <returns>Minimum value in node's subtree.</returns>
+        </member>
+        <member name="M:DataStructures.AVLTree.AvlTree`1.GetMax(DataStructures.AVLTree.AvlTreeNode{`0})">
+            <summary>
+                Helper function to get node instance with maximum key value
+                in the specified subtree.
+            </summary>
+            <param name="node">Node specifying root of subtree.</param>
+            <returns>Maximum value in node's subtree.</returns>
+        </member>
+        <member name="M:DataStructures.AVLTree.AvlTree`1.Add(DataStructures.AVLTree.AvlTreeNode{`0},`0)">
+            <summary>
+                Recursively function to add a node to the tree.
+            </summary>
+            <param name="node">Node to check for null leaf.</param>
+            <param name="key">Key value to add.</param>
+            <returns>New node with key inserted.</returns>
+        </member>
+        <member name="M:DataStructures.AVLTree.AvlTree`1.Remove(DataStructures.AVLTree.AvlTreeNode{`0},`0)">
+            <summary>
+                Recursive function to remove node from tree.
+            </summary>
+            <param name="node">Node to check for key.</param>
+            <param name="key">Key value to remove.</param>
+            <returns>New node with key removed.</returns>
+        </member>
+        <member name="T:DataStructures.AVLTree.AvlTreeNode`1">
+            <summary>
+                Generic class to represent nodes in an <see cref="T:DataStructures.AVLTree.AvlTree`1"/>
+                instance.
+            </summary>
+            <typeparam name="TKey">The type of key for the node.</typeparam>
+        </member>
+        <member name="P:DataStructures.AVLTree.AvlTreeNode`1.Key">
+            <summary>
+                Gets or sets key value of node.
+            </summary>
+        </member>
+        <member name="P:DataStructures.AVLTree.AvlTreeNode`1.BalanceFactor">
+            <summary>
+                Gets the balance factor of the node.
+            </summary>
+        </member>
+        <member name="P:DataStructures.AVLTree.AvlTreeNode`1.Left">
+            <summary>
+                Gets or sets the left child of the node.
+            </summary>
+        </member>
+        <member name="P:DataStructures.AVLTree.AvlTreeNode`1.Right">
+            <summary>
+                Gets or sets the right child of the node.
+            </summary>
+        </member>
+        <member name="P:DataStructures.AVLTree.AvlTreeNode`1.Height">
+            <summary>
+                Gets or sets the height of the node.
+            </summary>
+        </member>
+        <member name="M:DataStructures.AVLTree.AvlTreeNode`1.#ctor(`0)">
+            <summary>
+                Initializes a new instance of the
+                <see cref="T:DataStructures.AVLTree.AvlTreeNode`1"/> class.
+            </summary>
+            <param name="key">Key value for node.</param>
+        </member>
+        <member name="M:DataStructures.AVLTree.AvlTreeNode`1.UpdateBalanceFactor">
+            <summary>
+                Update the node's height and balance factor.
+            </summary>
+        </member>
+        <member name="T:DataStructures.BinarySearchTree.BinarySearchTree`1">
+            <summary>
+                An ordered tree with efficient insertion, removal, and lookup.
+            </summary>
+            <remarks>
+                A Binary Search Tree (BST) is a tree that satisfies the following properties:
+                <list type="bullet">
+                    <item>All nodes in the tree contain two children, usually called Left and Right.</item>
+                    <item>All nodes in the Left subtree contain keys that are less than the node's key.</item>
+                    <item>All nodes in the Right subtree contain keys that are greater than the node's key.</item>
+                </list>
+                A BST will have an average complexity of O(log n) for insertion, removal, and lookup operations.
+            </remarks>
+            <typeparam name="TKey">Type of key for the BST. Keys must implement IComparable.</typeparam>
+        </member>
+        <member name="F:DataStructures.BinarySearchTree.BinarySearchTree`1.comparer">
+            <summary>
+                Comparer to use when comparing node elements/keys.
+            </summary>
+        </member>
+        <member name="P:DataStructures.BinarySearchTree.BinarySearchTree`1.Root">
+            <summary>
+                Gets the root of the BST.
+            </summary>
+        </member>
+        <member name="P:DataStructures.BinarySearchTree.BinarySearchTree`1.Count">
+            <summary>
+                Gets the number nodes currently in the BST.
+            </summary>
+        </member>
+        <member name="M:DataStructures.BinarySearchTree.BinarySearchTree`1.Add(`0)">
+            <summary>
+                Insert a key into the BST.
+            </summary>
+            <param name="key">The key to insert.</param>
+            <exception cref="T:System.ArgumentException">
+                Thrown if key is already in BST.
+            </exception>
+        </member>
+        <member name="M:DataStructures.BinarySearchTree.BinarySearchTree`1.AddRange(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+                Insert multiple keys into the BST.
+                Keys are inserted in the order they appear in the sequence.
+            </summary>
+            <param name="keys">Sequence of keys to insert.</param>
+        </member>
+        <member name="M:DataStructures.BinarySearchTree.BinarySearchTree`1.Search(`0)">
+            <summary>
+                Find a node with the specified key.
+            </summary>
+            <param name="key">The key to search for.</param>
+            <returns>The node with the specified key if it exists, otherwise a default value is returned.</returns>
+        </member>
+        <member name="M:DataStructures.BinarySearchTree.BinarySearchTree`1.Contains(`0)">
+            <summary>
+                Checks if the specified key is in the BST.
+            </summary>
+            <param name="key">The key to search for.</param>
+            <returns>true if the key is in the BST, false otherwise.</returns>
+        </member>
+        <member name="M:DataStructures.BinarySearchTree.BinarySearchTree`1.Remove(`0)">
+            <summary>
+                Removes a node with a key that matches <paramref name="key" />.
+            </summary>
+            <param name="key">The key to search for.</param>
+            <returns>true if the removal was successful, false otherwise.</returns>
+        </member>
+        <member name="M:DataStructures.BinarySearchTree.BinarySearchTree`1.GetMin">
+            <summary>
+                Returns a node with the smallest key.
+            </summary>
+            <returns>The node if possible, a default value otherwise.</returns>
+        </member>
+        <member name="M:DataStructures.BinarySearchTree.BinarySearchTree`1.GetMax">
+            <summary>
+                Returns a node with the largest key.
+            </summary>
+            <returns>The node if possible, a default value otherwise.</returns>
+        </member>
+        <member name="M:DataStructures.BinarySearchTree.BinarySearchTree`1.GetKeysInOrder">
+            <summary>
+                Returns all the keys in the BST, sorted In-Order.
+            </summary>
+            <returns>A list of keys in the BST.</returns>
+        </member>
+        <member name="M:DataStructures.BinarySearchTree.BinarySearchTree`1.GetKeysPreOrder">
+            <summary>
+                Returns all the keys in the BST, sorted Pre-Order.
+            </summary>
+            <returns>A list of keys in the BST.</returns>
+        </member>
+        <member name="M:DataStructures.BinarySearchTree.BinarySearchTree`1.GetKeysPostOrder">
+            <summary>
+                Returns all the keys in the BST, sorted Post-Order.
+            </summary>
+            <returns>A list of keys in the BST.</returns>
+        </member>
+        <member name="M:DataStructures.BinarySearchTree.BinarySearchTree`1.Add(DataStructures.BinarySearchTree.BinarySearchTreeNode{`0},`0)">
+            <summary>
+                Recursive method to add a key to the BST.
+            </summary>
+            <param name="node">Node to search from.</param>
+            <param name="key">Key to add.</param>
+            <exception cref="T:System.ArgumentException">
+                Thrown if key is already in the BST.
+            </exception>
+        </member>
+        <member name="M:DataStructures.BinarySearchTree.BinarySearchTree`1.Remove(DataStructures.BinarySearchTree.BinarySearchTreeNode{`0},DataStructures.BinarySearchTree.BinarySearchTreeNode{`0},`0)">
+            <summary>
+                Removes a node with the specified key from the BST.
+            </summary>
+            <param name="parent">The parent node of <paramref name="node" />.</param>
+            <param name="node">The node to check/search from.</param>
+            <param name="key">The key to remove.</param>
+            <returns>true if the operation was successful, false otherwise.</returns>
+            <remarks>
+                Removing a node from the BST can be split into three cases:
+                <br></br>
+                0. The node to be removed has no children. In this case, the node can just be removed from the tree.
+                <br></br>
+                1. The node to be removed has one child. In this case, the node's child is moved to the node's parent,
+                then the node is removed from the tree.
+                <br></br>
+                2. The node to be removed has two children. In this case, we must find a suitable node among the children
+                subtrees to replace the node. This can be done with either the in-order predecessor or the in-order successor.
+                The in-order predecessor is the largest node in Left subtree, or the largest node that is still smaller then the
+                current node. The in-order successor is the smallest node in the Right subtree, or the smallest node that is
+                still larger than the current node. Either way, once this suitable node is found, remove it from the tree (it
+                should be either a case 1 or 2 node) and replace the node to be removed with this suitable node.
+                <br></br>
+                More information: https://en.wikipedia.org/wiki/Binary_search_tree#Deletion .
+            </remarks>
+        </member>
+        <member name="M:DataStructures.BinarySearchTree.BinarySearchTree`1.GetMax(DataStructures.BinarySearchTree.BinarySearchTreeNode{`0})">
+            <summary>
+                Recursive method to get node with largest key.
+            </summary>
+            <param name="node">Node to search from.</param>
+            <returns>Node with largest value.</returns>
+        </member>
+        <member name="M:DataStructures.BinarySearchTree.BinarySearchTree`1.GetMin(DataStructures.BinarySearchTree.BinarySearchTreeNode{`0})">
+            <summary>
+                Recursive method to get node with smallest key.
+            </summary>
+            <param name="node">Node to search from.</param>
+            <returns>Node with smallest value.</returns>
+        </member>
+        <member name="M:DataStructures.BinarySearchTree.BinarySearchTree`1.GetKeysInOrder(DataStructures.BinarySearchTree.BinarySearchTreeNode{`0})">
+            <summary>
+                Recursive method to get a list with the keys sorted in in-order order.
+            </summary>
+            <param name="node">Node to traverse from.</param>
+            <returns>List of keys in in-order order.</returns>
+        </member>
+        <member name="M:DataStructures.BinarySearchTree.BinarySearchTree`1.GetKeysPreOrder(DataStructures.BinarySearchTree.BinarySearchTreeNode{`0})">
+            <summary>
+                Recursive method to get a list with the keys sorted in pre-order order.
+            </summary>
+            <param name="node">Node to traverse from.</param>
+            <returns>List of keys in pre-order order.</returns>
+        </member>
+        <member name="M:DataStructures.BinarySearchTree.BinarySearchTree`1.GetKeysPostOrder(DataStructures.BinarySearchTree.BinarySearchTreeNode{`0})">
+            <summary>
+                Recursive method to get a list with the keys sorted in post-order order.
+            </summary>
+            <param name="node">Node to traverse from.</param>
+            <returns>List of keys in post-order order.</returns>
+        </member>
+        <member name="M:DataStructures.BinarySearchTree.BinarySearchTree`1.Search(DataStructures.BinarySearchTree.BinarySearchTreeNode{`0},`0)">
+            <summary>
+                Recursive method to find a node with a matching key.
+            </summary>
+            <param name="node">Node to search from.</param>
+            <param name="key">Key to find.</param>
+            <returns>The node with the specified if it exists, a default value otherwise.</returns>
+        </member>
+        <member name="T:DataStructures.BinarySearchTree.BinarySearchTreeNode`1">
+            <summary>
+                Generic node class for BinarySearchTree.
+                Keys for each node are immutable.
+            </summary>
+            <typeparam name="TKey">Type of key for the node. Keys must implement IComparable.</typeparam>
+        </member>
+        <member name="M:DataStructures.BinarySearchTree.BinarySearchTreeNode`1.#ctor(`0)">
+            <summary>
+                Initializes a new instance of the <see cref="T:DataStructures.BinarySearchTree.BinarySearchTreeNode`1" /> class.
+            </summary>
+            <param name="key">The key of this node.</param>
+        </member>
+        <member name="P:DataStructures.BinarySearchTree.BinarySearchTreeNode`1.Key">
+            <summary>
+                Gets the key for this node.
+            </summary>
+        </member>
+        <member name="P:DataStructures.BinarySearchTree.BinarySearchTreeNode`1.Left">
+            <summary>
+                Gets or sets the reference to a child node that precedes/comes before this node.
+            </summary>
+        </member>
+        <member name="P:DataStructures.BinarySearchTree.BinarySearchTreeNode`1.Right">
+            <summary>
+                Gets or sets the reference to a child node that follows/comes after this node.
+            </summary>
+        </member>
+        <member name="T:DataStructures.BitArray">
+            <summary>
+                This class implements a bit-array and provides some
+                useful functions/operations to deal with this type of
+                data structure.
+            </summary>
+        </member>
+        <member name="M:DataStructures.BitArray.#ctor(System.Int32)">
+            <summary>
+                Initializes a new instance of the <see cref="T:DataStructures.BitArray" /> class.
+                setups the array with false-values.
+            </summary>
+            <param name="n">length of the array.</param>
+        </member>
+        <member name="M:DataStructures.BitArray.#ctor(System.String)">
+            <summary>
+                Initializes a new instance of the <see cref="T:DataStructures.BitArray" /> class.
+                Setups the array with the input sequence.
+                purpose: Setups the array with the input sequence.
+                assumes: sequence must been greater or equal to 1.
+                the sequence may only contain ones or zeros.
+            </summary>
+            <param name="sequence">A string sequence of 0's and 1's.</param>
+        </member>
+        <member name="M:DataStructures.BitArray.#ctor(System.Boolean[])">
+            <summary>
+                Initializes a new instance of the <see cref="T:DataStructures.BitArray" /> class.
+                Setups the bit-array with the input array.
+            </summary>
+            <param name="bits">A boolean array of bits.</param>
+        </member>
+        <member name="P:DataStructures.BitArray.Length">
+            <summary>
+                Gets the length of the current bit array.
+            </summary>
+        </member>
+        <member name="P:DataStructures.BitArray.Item(System.Int32)">
+            <summary>
+                Gets element given an offset.
+            </summary>
+            <param name="offset">Position.</param>
+            <returns>Element on array.</returns>
+        </member>
+        <member name="M:DataStructures.BitArray.Clone">
+            <summary>
+                Returns a copy of the current bit-array.
+            </summary>
+            <returns>Bit-array clone.</returns>
+        </member>
+        <member name="M:DataStructures.BitArray.GetEnumerator">
+            <summary>
+                Gets a enumerator for this BitArray-Object.
+            </summary>
+            <returns>Returns a enumerator for this BitArray-Object.</returns>
+        </member>
+        <member name="M:DataStructures.BitArray.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+                Gets a enumerator for this BitArray-Object.
+            </summary>
+            <returns>Returns a enumerator for this BitArray-Object.</returns>
+        </member>
+        <member name="P:DataStructures.BitArray.Current">
+            <summary>
+                Gets a value indicating whether the current bit of the array is set.
+            </summary>
+        </member>
+        <member name="P:DataStructures.BitArray.System#Collections#IEnumerator#Current">
+            <summary>
+                Gets a value indicating whether the current bit of the array is set.
+            </summary>
+        </member>
+        <member name="M:DataStructures.BitArray.MoveNext">
+            <summary>
+                MoveNext (for interface IEnumerator).
+            </summary>
+            <returns>Returns True if 'position' successful increased; False otherwise.</returns>
+        </member>
+        <member name="M:DataStructures.BitArray.Reset">
+            <summary>
+                Resets the position of the enumerator.
+                Reset (for interface IEnumerator).
+            </summary>
+        </member>
+        <member name="M:DataStructures.BitArray.Dispose">
+            <summary>
+                Disposes object, nothing to dispose here though.
+            </summary>
+        </member>
+        <member name="M:DataStructures.BitArray.op_BitwiseAnd(DataStructures.BitArray,DataStructures.BitArray)">
+            <summary>
+                Returns a bit-array that represents the bit by bit AND (&amp;).
+                Assumes arrays have the same length.
+            </summary>
+            <param name="one">First bit-array.</param>
+            <param name="two">Second bit-array.</param>
+            <returns>bit-array.</returns>
+        </member>
+        <member name="M:DataStructures.BitArray.op_BitwiseOr(DataStructures.BitArray,DataStructures.BitArray)">
+            <summary>
+                Returns a bit-array that represents the bit by bit OR.
+                Assumes arrays have the same length.
+            </summary>
+            <param name="one">First bit-array.</param>
+            <param name="two">Second bit-array.</param>
+            <returns>bit-array that represents the bit by bit OR.</returns>
+        </member>
+        <member name="M:DataStructures.BitArray.op_OnesComplement(DataStructures.BitArray)">
+            <summary>
+                Returns a bit-array that represents the operator ~ (NOT).
+                Assumes arrays have the same length.
+            </summary>
+            <param name="one">Bit-array.</param>
+            <returns>bitwise not.</returns>
+        </member>
+        <member name="M:DataStructures.BitArray.op_LeftShift(DataStructures.BitArray,System.Int32)">
+            <summary>
+                Returns a bit-array that represents bitwise shift left (&gt;&gt;).
+                Assumes arrays have the same length.
+            </summary>
+            <param name="other">Bit-array.</param>
+            <param name="n">Number of bits.</param>
+            <returns>Bitwise shifted BitArray.</returns>
+        </member>
+        <member name="M:DataStructures.BitArray.op_ExclusiveOr(DataStructures.BitArray,DataStructures.BitArray)">
+            <summary>
+                Returns a bit-array that represents the bit by bit XOR.
+                Assumes arrays have the same length.
+            </summary>
+            <param name="one">First bit-array.</param>
+            <param name="two">Second bit-array.</param>
+            <returns>bit-array.</returns>
+        </member>
+        <member name="M:DataStructures.BitArray.op_RightShift(DataStructures.BitArray,System.Int32)">
+            <summary>
+                Returns a bit-array that represents bitwise shift right (>>).
+                Assumes arrays have the same length.
+            </summary>
+            <param name="other">Bit-array.</param>
+            <param name="n">Number of bits.</param>
+            <returns>Bitwise shifted BitArray.</returns>
+        </member>
+        <member name="M:DataStructures.BitArray.op_Equality(DataStructures.BitArray,DataStructures.BitArray)">
+            <summary>
+                Checks if both arrays are == (equal).
+                The input assumes arrays have the same length.
+            </summary>
+            <param name="one">First bit-array.</param>
+            <param name="two">Second bit-array.</param>
+            <returns>Returns True if there inputs are equal; False otherwise.</returns>
+        </member>
+        <member name="M:DataStructures.BitArray.op_Inequality(DataStructures.BitArray,DataStructures.BitArray)">
+            <summary>
+                Checks if both arrays are != (not-equal).
+                The input assumes arrays have the same length.
+            </summary>
+            <param name="one">First bit-array.</param>
+            <param name="two">Second bit-array.</param>
+            <returns>Returns True if there inputs aren't equal; False otherwise.</returns>
+        </member>
+        <member name="M:DataStructures.BitArray.Compile(System.String)">
+            <summary>
+                Compiles the binary sequence into the inner data structure.
+                The sequence must have the same length, as the bit-array.
+                The sequence may only be allowed contains ones or zeros.
+            </summary>
+            <param name="sequence">A string sequence of 0's and 1's.</param>
+        </member>
+        <member name="M:DataStructures.BitArray.Compile(System.Int32)">
+            <summary>
+                Compiles integer number into the inner data structure.
+                Assumes: the number must have the same bit length.
+            </summary>
+            <param name="number">A positive integer number.</param>
+        </member>
+        <member name="M:DataStructures.BitArray.Compile(System.Int64)">
+            <summary>
+                Compiles integer number into the inner data structure.
+                The number must have the same bit length.
+            </summary>
+            <param name="number">A positive long integer number.</param>
+        </member>
+        <member name="M:DataStructures.BitArray.ToString">
+            <summary>
+                Is the opposit of the Compile(...) method.
+            </summary>
+            <returns>Returns a string representation of the inner data structure.</returns>
+        </member>
+        <member name="M:DataStructures.BitArray.NumberOfOneBits">
+            <summary>
+                Gets the number of one-bits in the field.
+            </summary>
+            <returns>quantity of bits in current bit-array.</returns>
+        </member>
+        <member name="M:DataStructures.BitArray.NumberOfZeroBits">
+            <summary>
+                Gets the number of zero-bits in the field.
+            </summary>
+            <returns>quantity of bits.</returns>
+        </member>
+        <member name="M:DataStructures.BitArray.EvenParity">
+            <summary>
+                To check for even parity.
+            </summary>
+            <returns>Returns True if parity is even; False otherwise.</returns>
+        </member>
+        <member name="M:DataStructures.BitArray.OddParity">
+            <summary>
+                To check for odd parity.
+            </summary>
+            <returns>Returns True if parity is odd; False otherwise.</returns>
+        </member>
+        <member name="M:DataStructures.BitArray.ToInt64">
+            <summary>
+                Returns a long integer representation of the bit-array.
+                Assumes the bit-array length must been smaller or equal to 64 bit.
+            </summary>
+            <returns>Long integer array.</returns>
+        </member>
+        <member name="M:DataStructures.BitArray.ToInt32">
+            <summary>
+                Returns a long integer representation of the bit-array.
+                Assumes the bit-array length must been smaller or equal to 32 bit.
+            </summary>
+            <returns>integer array.</returns>
+        </member>
+        <member name="M:DataStructures.BitArray.ResetField">
+            <summary>
+                Sets all bits on false.
+            </summary>
+        </member>
+        <member name="M:DataStructures.BitArray.SetAll(System.Boolean)">
+            <summary>
+                Sets all bits on the value of the flag.
+            </summary>
+            <param name="flag">Bollean flag (false-true).</param>
+        </member>
+        <member name="M:DataStructures.BitArray.Equals(System.Object)">
+            <summary>
+                Checks if bit-array are equal.
+                Assumes the input bit-arrays must have same length.
+            </summary>
+            <param name="obj">Bit-array object.</param>
+            <returns>Returns true if there inputs are equal otherwise false.</returns>
+        </member>
+        <member name="M:DataStructures.BitArray.GetHashCode">
+            <summary>
+                Gets has-code of bit-array.
+                Assumes bit-array length must been smaller or equal to 32.
+            </summary>
+            <returns>hash-code for this BitArray instance.</returns>
+        </member>
+        <member name="M:DataStructures.BitArray.Match(System.String)">
+            <summary>
+                Utility method foir checking a given sequence contains only zeros and ones.
+                This method will used in Constructor (sequence : string) and Compile(sequence : string).
+            </summary>
+            <param name="sequence">String sequence.</param>
+            <returns>returns True if sequence contains only zeros and ones; False otherwise.</returns>
+        </member>
+        <member name="T:DataStructures.Cache.LfuCache`2">
+             <summary>
+             Least Frequently Used (LFU) cache implementation.
+             </summary>
+             <typeparam name="TKey">The type of the key (must be not null).</typeparam>
+             <typeparam name="TValue">The type of the value.</typeparam>
+             <remarks>
+             Cache keeps up to <c>capacity</c> items. When new item is added and cache is full,
+             one of the least frequently used item is removed (e.g. it keeps N items that were the most
+             frequently requested using <c>Get()</c> or <c>Put()</c> methods).
+             When there are multiple items with the same frequency, the least recently used item is removed.
+            
+             Cache is built on top of two data structures:
+             - <c>Dictionary</c>. Allows items to be looked up by key in O(1) time. Another dictionary
+               is used to store the frequency of each key.
+             - <c>LinkedList</c> - Allows items with the same frequency to be ordered by the last
+               usage in O(1) time.
+            
+             Useful links:
+             https://en.wikipedia.org/wiki/Cache_replacement_policies
+             https://www.enjoyalgorithms.com/blog/least-frequently-used-cache
+             https://www.educative.io/answers/what-is-least-frequently-used-cache-replace-policy
+             https://leetcode.com/problems/lfu-cache/ .
+             </remarks>
+        </member>
+        <member name="M:DataStructures.Cache.LfuCache`2.#ctor(System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:DataStructures.Cache.LfuCache`2"/> class.
+            </summary>
+            <param name="capacity">The max number of items the cache can store.</param>
+        </member>
+        <member name="M:DataStructures.Cache.LfuCache`2.Get(`0)">
+            <summary>
+            Gets the cached item by key.
+            </summary>
+            <param name="key">The key of cached item.</param>
+            <returns>The cached item or <c>default</c> if item is not found.</returns>
+            <remarks> Time complexity: O(1). </remarks>
+        </member>
+        <member name="M:DataStructures.Cache.LfuCache`2.Put(`0,`1)">
+            <summary>
+            Adds or updates the value in the cache.
+            </summary>
+            <param name="key">The key of item to cache.</param>
+            <param name="value">The value to cache.</param>
+            <remarks>
+            Time complexity: O(1).
+            If the value is already cached, it is updated and the item is moved
+            to the end of the LRU list.
+            If the cache is full, one of the least frequently used items is removed.
+            </remarks>
+        </member>
+        <member name="T:DataStructures.Cache.LruCache`2">
+             <summary>
+             Least Recently Used (LRU) cache implementation.
+             </summary>
+             <typeparam name="TKey">The type of the key (must be not null).</typeparam>
+             <typeparam name="TValue">The type of the value.</typeparam>
+             <remarks>
+             Cache keeps up to <c>capacity</c> items. When new item is added and cache is full,
+             the least recently used item is removed (e.g. it keeps N items that were recently requested
+             using <c>Get()</c> or <c>Put()</c> methods).
+            
+             Cache is built on top of two data structures:
+             - <c>Dictionary</c> - allows items to be looked up by key in O(1) time.
+             - <c>LinkedList</c> - allows items to be ordered by last usage time in O(1) time.
+            
+             Useful links:
+             https://en.wikipedia.org/wiki/Cache_replacement_policies
+             https://www.educative.io/m/implement-least-recently-used-cache
+             https://leetcode.com/problems/lru-cache/
+            
+             In order to make the most recently used (MRU) cache, when the cache is full,
+             just remove the last node from the linked list in the method <c>Put</c>
+             (replace <c>RemoveFirst</c> with <c>RemoveLast</c>).
+             </remarks>
+        </member>
+        <member name="M:DataStructures.Cache.LruCache`2.#ctor(System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:DataStructures.Cache.LruCache`2"/> class.
+            </summary>
+            <param name="capacity">The max number of items the cache can store.</param>
+        </member>
+        <member name="M:DataStructures.Cache.LruCache`2.Get(`0)">
+            <summary>
+            Gets the cached item by key.
+            </summary>
+            <param name="key">The key of cached item.</param>
+            <returns>The cached item or <c>default</c> if item is not found.</returns>
+            <remarks> Time complexity: O(1). </remarks>
+        </member>
+        <member name="M:DataStructures.Cache.LruCache`2.Put(`0,`1)">
+            <summary>
+            Adds or updates the value in the cache.
+            </summary>
+            <param name="key">The key of item to cache.</param>
+            <param name="value">The value to cache.</param>
+            <remarks>
+            Time complexity: O(1).
+            If the value is already cached, it is updated and the item is moved
+            to the end of the LRU list.
+            If the cache is full, the least recently used item is removed.
+            </remarks>
+        </member>
+        <member name="T:DataStructures.DisjointSet.DisjointSet`1">
+            <summary>
+            Implementation of Disjoint Set with Union By Rank and Path Compression heuristics.
+            </summary>
+            <typeparam name="T"> generic type for implementation.</typeparam>
+        </member>
+        <member name="M:DataStructures.DisjointSet.DisjointSet`1.MakeSet(`0)">
+            <summary>
+            make a new set and return its representative.
+            </summary>
+            <param name="x">element to add in to the DS.</param>
+            <returns>representative of x.</returns>
+        </member>
+        <member name="M:DataStructures.DisjointSet.DisjointSet`1.FindSet(DataStructures.DisjointSet.Node{`0})">
+            <summary>
+            find the representative of a certain node.
+            </summary>
+            <param name="node">node to find representative.</param>
+            <returns>representative of x.</returns>
+        </member>
+        <member name="M:DataStructures.DisjointSet.DisjointSet`1.UnionSet(DataStructures.DisjointSet.Node{`0},DataStructures.DisjointSet.Node{`0})">
+            <summary>
+            merge two sets.
+            </summary>
+            <param name="x">first set member.</param>
+            <param name="y">second set member.</param>
+        </member>
+        <member name="T:DataStructures.DisjointSet.Node`1">
+            <summary>
+            node class to be used by disjoint set to represent nodes in Disjoint Set forest.
+            </summary>
+            <typeparam name="T">generic type for data to be stored.</typeparam>
+        </member>
+        <member name="T:DataStructures.Fenwick.BinaryIndexedTree">
+             <summary>
+             Represent classical realization of Fenwiсk tree or Binary Indexed tree.
+            
+             BITree[0..n] --> Array that represents Binary Indexed Tree.
+             arr[0..n-1] --> Input array for which prefix sum is evaluated.
+             </summary>
+        </member>
+        <member name="M:DataStructures.Fenwick.BinaryIndexedTree.#ctor(System.Int32[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:DataStructures.Fenwick.BinaryIndexedTree"/> class.
+            Create Binary indexed tree from the given array.
+            </summary>
+            <param name="array">Initial array.</param>
+        </member>
+        <member name="M:DataStructures.Fenwick.BinaryIndexedTree.GetSum(System.Int32)">
+            <summary>
+            This method assumes that the array is preprocessed and
+            partial sums of array elements are stored in BITree[].
+            </summary>
+            <param name="index">The position to sum from.</param>
+            <returns>Returns sum of arr[0..index].</returns>
+        </member>
+        <member name="M:DataStructures.Fenwick.BinaryIndexedTree.UpdateTree(System.Int32,System.Int32)">
+            <summary>
+            Updates a node in Binary Index Tree at given index.
+            The given value 'val' is added to BITree[i] and all of its ancestors in tree.
+            </summary>
+            <param name="index">Given index.</param>
+            <param name="val">Value to be update on.</param>
+        </member>
+        <member name="T:DataStructures.Graph.DirectedWeightedGraph`1">
+            <summary>
+                Implementation of the directed weighted graph via adjacency matrix.
+            </summary>
+            <typeparam name="T">Generic Type.</typeparam>
+        </member>
+        <member name="F:DataStructures.Graph.DirectedWeightedGraph`1.capacity">
+            <summary>
+                Capacity of the graph, indicates the maximum amount of vertices.
+            </summary>
+        </member>
+        <member name="F:DataStructures.Graph.DirectedWeightedGraph`1.adjacencyMatrix">
+            <summary>
+                Adjacency matrix which reflects the edges between vertices and their weight.
+                Zero value indicates no edge between two vertices.
+            </summary>
+        </member>
+        <member name="M:DataStructures.Graph.DirectedWeightedGraph`1.#ctor(System.Int32)">
+            <summary>
+                Initializes a new instance of the <see cref="T:DataStructures.Graph.DirectedWeightedGraph`1"/> class.
+            </summary>
+            <param name="capacity">Capacity of the graph, indicates the maximum amount of vertices.</param>
+        </member>
+        <member name="P:DataStructures.Graph.DirectedWeightedGraph`1.Vertices">
+            <summary>
+                Gets list of vertices of the graph.
+            </summary>
+        </member>
+        <member name="P:DataStructures.Graph.DirectedWeightedGraph`1.Count">
+            <summary>
+                Gets current amount of vertices in the graph.
+            </summary>
+        </member>
+        <member name="M:DataStructures.Graph.DirectedWeightedGraph`1.AddVertex(`0)">
+            <summary>
+                Adds new vertex to the graph.
+            </summary>
+            <param name="data">Data of the vertex.</param>
+            <returns>Reference to created vertex.</returns>
+        </member>
+        <member name="M:DataStructures.Graph.DirectedWeightedGraph`1.AddEdge(DataStructures.Graph.Vertex{`0},DataStructures.Graph.Vertex{`0},System.Double)">
+            <summary>
+                Creates an edge between two vertices of the graph.
+            </summary>
+            <param name="startVertex">Vertex, edge starts at.</param>
+            <param name="endVertex">Vertex, edge ends at.</param>
+            <param name="weight">Double weight of an edge.</param>
+        </member>
+        <member name="M:DataStructures.Graph.DirectedWeightedGraph`1.RemoveVertex(DataStructures.Graph.Vertex{`0})">
+            <summary>
+                Removes vertex from the graph.
+            </summary>
+            <param name="vertex">Vertex to be removed.</param>
+        </member>
+        <member name="M:DataStructures.Graph.DirectedWeightedGraph`1.RemoveEdge(DataStructures.Graph.Vertex{`0},DataStructures.Graph.Vertex{`0})">
+            <summary>
+                Removes edge between two vertices.
+            </summary>
+            <param name="startVertex">Vertex, edge starts at.</param>
+            <param name="endVertex">Vertex, edge ends at.</param>
+        </member>
+        <member name="M:DataStructures.Graph.DirectedWeightedGraph`1.GetNeighbors(DataStructures.Graph.Vertex{`0})">
+            <summary>
+                Gets a neighbors of particular vertex.
+            </summary>
+            <param name="vertex">Vertex, method gets list of neighbors for.</param>
+            <returns>Collection of the neighbors of particular vertex.</returns>
+        </member>
+        <member name="M:DataStructures.Graph.DirectedWeightedGraph`1.AreAdjacent(DataStructures.Graph.Vertex{`0},DataStructures.Graph.Vertex{`0})">
+            <summary>
+                Returns true, if there is an edge between two vertices.
+            </summary>
+            <param name="startVertex">Vertex, edge starts at.</param>
+            <param name="endVertex">Vertex, edge ends at.</param>
+            <returns>True if edge exists, otherwise false.</returns>
+        </member>
+        <member name="M:DataStructures.Graph.DirectedWeightedGraph`1.AdjacentDistance(DataStructures.Graph.Vertex{`0},DataStructures.Graph.Vertex{`0})">
+            <summary>
+            Return the distance between two vertices in the graph.
+            </summary>
+            <param name="startVertex">first vertex in edge.</param>
+            <param name="endVertex">secnod vertex in edge.</param>
+            <returns>distance between the two.</returns>
+        </member>
+        <member name="T:DataStructures.Graph.Vertex`1">
+            <summary>
+                Implementation of graph vertex.
+            </summary>
+            <typeparam name="T">Generic Type.</typeparam>
+        </member>
+        <member name="P:DataStructures.Graph.Vertex`1.Data">
+            <summary>
+                Gets vertex data.
+            </summary>
+        </member>
+        <member name="P:DataStructures.Graph.Vertex`1.Index">
+            <summary>
+                Gets an index of the vertex in graph adjacency matrix.
+            </summary>
+        </member>
+        <member name="P:DataStructures.Graph.Vertex`1.Graph">
+            <summary>
+                Gets reference to the graph this vertex belongs to.
+            </summary>
+        </member>
+        <member name="M:DataStructures.Graph.Vertex`1.#ctor(`0,System.Int32,DataStructures.Graph.DirectedWeightedGraph{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:DataStructures.Graph.Vertex`1"/> class.
+            </summary>
+            <param name="data">Vertex data. Generic type.</param>
+            <param name="index">Index of the vertex in graph adjacency matrix.</param>
+            <param name="graph">Graph this vertex belongs to.</param>
+        </member>
+        <member name="M:DataStructures.Graph.Vertex`1.#ctor(`0,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:DataStructures.Graph.Vertex`1"/> class.
+            </summary>
+            <param name="data">Vertex data. Generic type.</param>
+            <param name="index">Index of the vertex in graph adjacency matrix.</param>
+        </member>
+        <member name="M:DataStructures.Graph.Vertex`1.SetGraphNull">
+            <summary>
+                Sets graph reference to the null. This method called when vertex removed from the graph.
+            </summary>
+        </member>
+        <member name="M:DataStructures.Graph.Vertex`1.ToString">
+            <summary>
+                Override of base ToString method. Prints vertex data and index in graph adjacency matrix.
+            </summary>
+            <returns>String which contains vertex data and index in graph adjacency matrix..</returns>
+        </member>
+        <member name="T:DataStructures.Hashing.Entry`2">
+            <summary>
+            Entry in the hash table.
+            </summary>
+            <typeparam name="TKey">Type of the key.</typeparam>
+            <typeparam name="TValue">Type of the value.</typeparam>
+            <remarks>
+            This class is used to store the key-value pairs in the hash table.
+            </remarks>
+        </member>
+        <member name="T:DataStructures.Hashing.HashTable`2">
+            <summary>
+            Hash table implementation.
+            </summary>
+            <typeparam name="TKey">Type of the key.</typeparam>
+            <typeparam name="TValue">Type of the value.</typeparam>
+        </member>
+        <member name="P:DataStructures.Hashing.HashTable`2.Count">
+            <summary>
+            Gets the number of elements in the hash table.
+            </summary>
+        </member>
+        <member name="P:DataStructures.Hashing.HashTable`2.Capacity">
+            <summary>
+            Gets the capacity of the hash table.
+            </summary>
+        </member>
+        <member name="P:DataStructures.Hashing.HashTable`2.LoadFactor">
+            <summary>
+            Gets the load factor of the hash table.
+            </summary>
+        </member>
+        <member name="P:DataStructures.Hashing.HashTable`2.Keys">
+            <summary>
+            Gets the keys in the hash table.
+            </summary>
+        </member>
+        <member name="P:DataStructures.Hashing.HashTable`2.Values">
+            <summary>
+            Gets the values in the hash table.
+            </summary>
+        </member>
+        <member name="P:DataStructures.Hashing.HashTable`2.Item(`0)">
+            <summary>
+            Gets or sets the value associated with the specified key.
+            </summary>
+            <param name="key">Key to get or set.</param>
+            <returns>Value associated with the key.</returns>
+        </member>
+        <member name="M:DataStructures.Hashing.HashTable`2.#ctor(System.Int32,System.Single)">
+            <summary>
+            Initializes a new instance of the <see cref="T:DataStructures.Hashing.HashTable`2"/> class.
+            </summary>
+            <param name="capacity">Initial capacity of the hash table.</param>
+            <param name="loadFactor">Load factor of the hash table.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException">Thrown when <paramref name="capacity"/> is less than or equal to 0.</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">Thrown when <paramref name="loadFactor"/> is less than or equal to 0.</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">Thrown when <paramref name="loadFactor"/> is greater than 1.</exception>
+            <remarks>
+            <paramref name="capacity"/> is rounded to the next prime number.
+            </remarks>
+            <see cref="M:DataStructures.Hashing.NumberTheory.PrimeNumber.NextPrime(System.Int32,System.Int32,System.Boolean)"/>
+            <see cref="M:DataStructures.Hashing.NumberTheory.PrimeNumber.IsPrime(System.Int32)"/>
+        </member>
+        <member name="M:DataStructures.Hashing.HashTable`2.Add(`0,`1)">
+            <summary>
+            Adds a key-value pair to the hash table.
+            </summary>
+            <param name="key">Key to add.</param>
+            <param name="value">Value to add.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="key"/> is null.</exception>
+            <exception cref="T:System.ArgumentException">Thrown when <paramref name="key"/> already exists in the hash table.</exception>
+            <remarks>
+            If the number of elements in the hash table is greater than or equal to the threshold, the hash table is resized.
+            </remarks>
+        </member>
+        <member name="M:DataStructures.Hashing.HashTable`2.Remove(`0)">
+            <summary>
+            Removes the key-value pair associated with the specified key.
+            </summary>
+            <param name="key">Key to remove.</param>
+            <returns>True if the key-value pair was removed, false otherwise.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="key"/> is null.</exception>
+            <remarks>
+            If the number of elements in the hash table is less than or equal to the threshold divided by 4, the hash table is resized.
+            </remarks>
+        </member>
+        <member name="M:DataStructures.Hashing.HashTable`2.GetIndex(`0)">
+            <summary>
+            Find the index of the entry associated with the specified key.
+            </summary>
+            <param name="key">Key to find.</param>
+            <returns>Index of the entry associated with the key.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="key"/> is null.</exception>
+        </member>
+        <member name="M:DataStructures.Hashing.HashTable`2.FindEntry(`0)">
+            <summary>
+            Finds the entry associated with the specified key.
+            </summary>
+            <param name="key">Key to find.</param>
+            <returns>Entry associated with the key.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="key"/> is null.</exception>
+            <remarks>
+            This method uses <see cref="M:DataStructures.Hashing.HashTable`2.GetIndex(`0)"/> internally.
+            </remarks>
+        </member>
+        <member name="M:DataStructures.Hashing.HashTable`2.ContainsKey(`0)">
+            <summary>
+            Checks if the hash table contains the specified key.
+            </summary>
+            <param name="key">Key to check.</param>
+            <returns>True if the hash table contains the key, false otherwise.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="key"/> is null.</exception>
+            <remarks>
+            This method uses <see cref="M:DataStructures.Hashing.HashTable`2.FindEntry(`0)"/> internally.
+            </remarks>
+        </member>
+        <member name="M:DataStructures.Hashing.HashTable`2.ContainsValue(`1)">
+            <summary>
+            Checks if the hash table contains the specified value.
+            </summary>
+            <param name="value">Value to check.</param>
+            <returns>True if the hash table contains the value, false otherwise.</returns>
+        </member>
+        <member name="M:DataStructures.Hashing.HashTable`2.Clear">
+            <summary>
+            Clears the hash table.
+            </summary>
+            <remarks>
+            This method resets the capacity of the hash table to the default capacity.
+            </remarks>
+        </member>
+        <member name="M:DataStructures.Hashing.HashTable`2.Resize">
+            <summary>
+            Resizes the hash table.
+            </summary>
+            <remarks>
+            This method doubles the capacity of the hash table and rehashes all the elements.
+            </remarks>
+        </member>
+        <member name="T:DataStructures.Hashing.NumberTheory.PrimeNumber">
+            <summary>
+            Class for prime number operations.
+            </summary>
+            <remarks>
+            A prime number is a natural number greater than 1 that is not a product of two smaller natural numbers.
+            </remarks>
+        </member>
+        <member name="M:DataStructures.Hashing.NumberTheory.PrimeNumber.IsPrime(System.Int32)">
+            <summary>
+            Checks if a number is prime or not.
+            </summary>
+            <param name="number">Number to check.</param>
+            <returns>True if number is prime, false otherwise.</returns>
+        </member>
+        <member name="M:DataStructures.Hashing.NumberTheory.PrimeNumber.NextPrime(System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            Gets the next prime number.
+            </summary>
+            <param name="number">Number to start from.</param>
+            <param name="factor">Factor to multiply the number by.</param>
+            <param name="desc">True to get the previous prime number, false otherwise.</param>
+            <returns>The next prime number.</returns>
+        </member>
+        <member name="T:DataStructures.Heap.BinaryHeap`1">
+            <summary>
+                A generic implementation of a binary heap.
+            </summary>
+            <remarks>
+                A binary heap is a complete binary tree that satisfies the heap property;
+                that is every node in the tree compares greater/less than or equal to its left and right
+                child nodes. Note that this is different from a binary search tree, where every node
+                must be the largest/smallest node of all of its children.
+                Although binary heaps are not very efficient, they are (probably) the simpliest heaps
+                to understand and implement.
+                More information: https://en.wikipedia.org/wiki/Binary_heap .
+            </remarks>
+            <typeparam name="T">Type of elements in binary heap.</typeparam>
+        </member>
+        <member name="F:DataStructures.Heap.BinaryHeap`1.comparer">
+            <summary>
+                Comparer to use when comparing elements.
+            </summary>
+        </member>
+        <member name="F:DataStructures.Heap.BinaryHeap`1.data">
+            <summary>
+                List to hold the elements of the heap.
+            </summary>
+        </member>
+        <member name="M:DataStructures.Heap.BinaryHeap`1.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:DataStructures.Heap.BinaryHeap`1" /> class.
+            </summary>
+        </member>
+        <member name="M:DataStructures.Heap.BinaryHeap`1.#ctor(System.Collections.Generic.Comparer{`0})">
+            <summary>
+                Initializes a new instance of the <see cref="T:DataStructures.Heap.BinaryHeap`1" /> class with a custom comparision function.
+            </summary>
+            <param name="customComparer">The custom comparing function to use to compare elements.</param>
+        </member>
+        <member name="P:DataStructures.Heap.BinaryHeap`1.Count">
+            <summary>
+                Gets the number of elements in the heap.
+            </summary>
+        </member>
+        <member name="M:DataStructures.Heap.BinaryHeap`1.Push(`0)">
+            <summary>
+                Add an element to the binary heap.
+            </summary>
+            <remarks>
+                Adding to the heap is done by append the element to the end of the backing list,
+                and pushing the added element up until the heap property is restored.
+            </remarks>
+            <param name="element">The element to add to the heap.</param>
+            <exception cref="T:System.ArgumentException">Thrown if element is already in heap.</exception>
+        </member>
+        <member name="M:DataStructures.Heap.BinaryHeap`1.Pop">
+            <summary>
+                Remove the top/root of the binary heap (ie: the largest/smallest element).
+            </summary>
+            <remarks>
+                Removing from the heap is done by swapping the top/root with the last element in
+                the backing list, removing the last element, and pushing the new root down
+                until the heap property is restored.
+            </remarks>
+            <returns>The top/root of the heap.</returns>
+            <exception cref="T:System.InvalidOperationException">Thrown if heap is empty.</exception>
+        </member>
+        <member name="M:DataStructures.Heap.BinaryHeap`1.Peek">
+            <summary>
+                Return the top/root of the heap without removing it.
+            </summary>
+            <returns>The top/root of the heap.</returns>
+            <exception cref="T:System.InvalidOperationException">Thrown if heap is empty.</exception>
+        </member>
+        <member name="M:DataStructures.Heap.BinaryHeap`1.PushPop(`0)">
+            <summary>
+                Returns element if it compares larger to the top/root of the heap, else
+                inserts element into the heap and returns the top/root of the heap.
+            </summary>
+            <param name="element">The element to check/insert.</param>
+            <returns>element if element compares larger than top/root of heap, top/root of heap otherwise.</returns>
+        </member>
+        <member name="M:DataStructures.Heap.BinaryHeap`1.Contains(`0)">
+            <summary>
+                Check if element is in the heap.
+            </summary>
+            <param name="element">The element to check for.</param>
+            <returns>true if element is in the heap, false otherwise.</returns>
+        </member>
+        <member name="M:DataStructures.Heap.BinaryHeap`1.Remove(`0)">
+            <summary>
+                Remove an element from the heap.
+            </summary>
+            <remarks>
+                In removing an element from anywhere in the heap, we only need to push down or up
+                the replacement value depending on how the removed value compares to its
+                replacement value.
+            </remarks>
+            <param name="element">The element to remove from the heap.</param>
+            <exception cref="T:System.ArgumentException">Thrown if element is not in heap.</exception>
+        </member>
+        <member name="M:DataStructures.Heap.BinaryHeap`1.Swap(System.Int32,System.Int32)">
+            <summary>
+                Swap the elements in the heap array at the given indices.
+            </summary>
+            <param name="idx1">First index.</param>
+            <param name="idx2">Second index.</param>
+        </member>
+        <member name="M:DataStructures.Heap.BinaryHeap`1.HeapifyUp(System.Int32)">
+            <summary>
+                Recursive function to restore heap properties.
+            </summary>
+            <remarks>
+                Restores heap property by swapping the element at <paramref name="elemIdx" />
+                with its parent if the element compares greater than its parent.
+            </remarks>
+            <param name="elemIdx">The element to check with its parent.</param>
+        </member>
+        <member name="M:DataStructures.Heap.BinaryHeap`1.HeapifyDown(System.Int32)">
+            <summary>
+                Recursive function to restore heap properties.
+            </summary>
+            <remarks>
+                Restores heap property by swapping the element at <paramref name="elemIdx" />
+                with the larger of its children.
+            </remarks>
+            <param name="elemIdx">The element to check with its children.</param>
+        </member>
+        <member name="T:DataStructures.Heap.FibonacciHeap.FHeapNode`1">
+            <summary>
+                These FHeapNodes are the bulk of the data structure. The have pointers to
+                their parent, a left and right sibling, and to a child. A node and its
+                siblings comprise a circularly doubly linked list.
+            </summary>
+            <typeparam name="T">A type that can be compared.</typeparam>
+        </member>
+        <member name="M:DataStructures.Heap.FibonacciHeap.FHeapNode`1.#ctor(`0)">
+            <summary>
+                Initializes a new instance of the <see cref="T:DataStructures.Heap.FibonacciHeap.FHeapNode`1" /> class.
+            </summary>
+            <param name="key">An item in the Fibonacci heap.</param>
+        </member>
+        <member name="P:DataStructures.Heap.FibonacciHeap.FHeapNode`1.Key">
+            <summary>
+                Gets or sets the data of this node.
+            </summary>
+        </member>
+        <member name="P:DataStructures.Heap.FibonacciHeap.FHeapNode`1.Parent">
+            <summary>
+                Gets or sets a reference to the parent.
+            </summary>
+        </member>
+        <member name="P:DataStructures.Heap.FibonacciHeap.FHeapNode`1.Left">
+            <summary>
+                Gets or sets a reference to the left sibling.
+            </summary>
+        </member>
+        <member name="P:DataStructures.Heap.FibonacciHeap.FHeapNode`1.Right">
+            <summary>
+                Gets or sets a reference to the right sibling.
+            </summary>
+        </member>
+        <member name="P:DataStructures.Heap.FibonacciHeap.FHeapNode`1.Child">
+            <summary>
+                Gets or sets a reference to one of the children, there may be more that
+                are siblings the this child, however this structure only maintains a
+                reference to one of them.
+            </summary>
+        </member>
+        <member name="P:DataStructures.Heap.FibonacciHeap.FHeapNode`1.Mark">
+            <summary>
+                Gets or sets a value indicating whether this node has been marked,
+                used in some operations.
+            </summary>
+        </member>
+        <member name="P:DataStructures.Heap.FibonacciHeap.FHeapNode`1.Degree">
+            <summary>
+                Gets or sets the number of nodes in the child linked list.
+            </summary>
+        </member>
+        <member name="M:DataStructures.Heap.FibonacciHeap.FHeapNode`1.AddRight(DataStructures.Heap.FibonacciHeap.FHeapNode{`0})">
+            <summary>
+                A helper function to add a node to the right of this one in the current
+                circularly doubly linked list.
+            </summary>
+            <param name="node">A node to go in the linked list.</param>
+        </member>
+        <member name="M:DataStructures.Heap.FibonacciHeap.FHeapNode`1.AddChild(DataStructures.Heap.FibonacciHeap.FHeapNode{`0})">
+            <summary>
+                Similar to AddRight, but adds the node as a sibling to the child node.
+            </summary>
+            <param name="node">A node to add to the child list of this node.</param>
+        </member>
+        <member name="M:DataStructures.Heap.FibonacciHeap.FHeapNode`1.Remove">
+            <summary>
+                Remove this item from the linked list it's in.
+            </summary>
+        </member>
+        <member name="M:DataStructures.Heap.FibonacciHeap.FHeapNode`1.ConcatenateRight(DataStructures.Heap.FibonacciHeap.FHeapNode{`0})">
+            <summary>
+                Combine the linked list that <c>otherList</c> sits inside, with the
+                linked list this is in. Do this by cutting the link between this node,
+                and the node to the right of this, and inserting the contents of the
+                otherList in between.
+            </summary>
+            <param name="otherList">
+                A node from another list whose elements we want
+                to concatenate to this list.
+            </param>
+        </member>
+        <member name="T:DataStructures.Heap.FibonacciHeap.FibonacciHeap`1">
+            <summary>
+                A generic implementation of a Fibonacci heap.
+            </summary>
+            <remarks>
+                <para>
+                    A Fibonacci heap is similar to a standard binary heap
+                    <see cref="T:DataStructures.Heap.BinaryHeap`1" />, however it uses concepts
+                    of amortized analysis to provide theoretical speedups on common operations like
+                    insert, union, and decrease-key while maintaining the same speed on all other
+                    operations.
+                </para>
+                <para>
+                    In practice, Fibonacci heaps are more complicated than binary heaps and require
+                    a large input problems before the benifits of the theoretical speed up
+                    begin to show.
+                </para>
+                <para>
+                    References:
+                    [1] Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest,
+                    and Clifford Stein. 2009. Introduction to Algorithms, Third Edition (3rd. ed.).
+                    The MIT Press.
+                </para>
+            </remarks>
+            <typeparam name="T">Type of elements in binary heap.</typeparam>
+        </member>
+        <member name="P:DataStructures.Heap.FibonacciHeap.FibonacciHeap`1.Count">
+            <summary>
+                Gets or sets the count of the number of nodes in the Fibonacci heap.
+            </summary>
+        </member>
+        <member name="P:DataStructures.Heap.FibonacciHeap.FibonacciHeap`1.MinItem">
+            <summary>
+                Gets or sets a reference to the MinItem. The MinItem and all of its siblings
+                comprise the root list, a list of trees that satisfy the heap property and
+                are joined in a circularly doubly linked list.
+            </summary>
+        </member>
+        <member name="M:DataStructures.Heap.FibonacciHeap.FibonacciHeap`1.Push(`0)">
+            <summary>
+                Add item <c>x</c> to this Fibonacci heap.
+            </summary>
+            <remarks>
+                To add an item to a Fibonacci heap, we simply add it to the "root list",
+                a circularly doubly linked list where our minimum item sits. Since adding
+                items to a linked list takes O(1) time, the overall time to perform this
+                operation is O(1).
+            </remarks>
+            <param name="x">An item to push onto the heap.</param>
+            <returns>
+                A reference to the item as it is in the heap. This is used for
+                operations like decresing key.
+            </returns>
+        </member>
+        <member name="M:DataStructures.Heap.FibonacciHeap.FibonacciHeap`1.Union(DataStructures.Heap.FibonacciHeap.FibonacciHeap{`0})">
+            <summary>
+                Combines all the elements of two fibonacci heaps.
+            </summary>
+            <remarks>
+                To union two Fibonacci heaps is a single fibonacci heap is a single heap
+                that contains all the elements of both heaps. This can be done in O(1) time
+                by concatenating the root lists together.
+                For more details on how two circularly linked lists are concatenated, see
+                <see cref="M:DataStructures.Heap.FibonacciHeap.FHeapNode`1.ConcatenateRight(DataStructures.Heap.FibonacciHeap.FHeapNode{`0})" />
+                Finally, check to see which of <c>this.MinItem</c> and <c>other.MinItem</c>
+                is smaller, and set <c>this.MinItem</c> accordingly
+                This operation destroys <c>other</c>.
+            </remarks>
+            <param name="other">
+                Another heap whose elements we wish to add to this heap.
+                The other heap will be destroyed as a result.
+            </param>
+        </member>
+        <member name="M:DataStructures.Heap.FibonacciHeap.FibonacciHeap`1.Pop">
+            <summary>
+                Return the MinItem and remove it from the heap.
+            </summary>
+            <remarks>
+                This function (with all of its helper functions) is the most complicated
+                part of the Fibonacci Heap. However, it can be broken down into a few steps.
+                <list type="number">
+                    <item>
+                        Add the children of MinItem to the root list. Either one of these children,
+                        or another of the items in the root list is a candidate to become the new
+                        MinItem.
+                    </item>
+                    <item>
+                        Remove the MinItem from the root list and appoint a new MinItem temporarily.
+                    </item>
+                    <item>
+                        <see cref="M:DataStructures.Heap.FibonacciHeap.FibonacciHeap`1.Consolidate" /> what's left
+                        of the heap.
+                    </item>
+                </list>
+            </remarks>
+            <returns>The minimum item from the heap.</returns>
+        </member>
+        <member name="M:DataStructures.Heap.FibonacciHeap.FibonacciHeap`1.Peek">
+            <summary>
+                A method to see what's on top of the heap without changing its structure.
+            </summary>
+            <returns>
+                Returns the top element without popping it from the structure of
+                the heap.
+            </returns>
+        </member>
+        <member name="M:DataStructures.Heap.FibonacciHeap.FibonacciHeap`1.DecreaseKey(DataStructures.Heap.FibonacciHeap.FHeapNode{`0},`0)">
+            <summary>
+                Reduce the key of x to be k.
+            </summary>
+            <remarks>
+                k must be less than x.Key, increasing the key of an item is not supported.
+            </remarks>
+            <param name="x">The item you want to reduce in value.</param>
+            <param name="k">The new value for the item.</param>
+        </member>
+        <member name="M:DataStructures.Heap.FibonacciHeap.FibonacciHeap`1.Cut(DataStructures.Heap.FibonacciHeap.FHeapNode{`0},DataStructures.Heap.FibonacciHeap.FHeapNode{`0})">
+            <summary>
+                Remove x from the child list of y.
+            </summary>
+            <param name="x">A child of y we just decreased the value of.</param>
+            <param name="y">The now former parent of x.</param>
+        </member>
+        <member name="M:DataStructures.Heap.FibonacciHeap.FibonacciHeap`1.CascadingCut(DataStructures.Heap.FibonacciHeap.FHeapNode{`0})">
+            <summary>
+                Rebalances the heap after the decrease operation takes place.
+            </summary>
+            <param name="y">An item that may no longer obey the heap property.</param>
+        </member>
+        <member name="M:DataStructures.Heap.FibonacciHeap.FibonacciHeap`1.Consolidate">
+            <summary>
+                <para>
+                    Consolidate is analogous to Heapify in <see cref="T:DataStructures.Heap.BinaryHeap`1" />.
+                </para>
+                <para>
+                    First, an array <c>A</c> [0...D(H.n)] is created where H.n is the number
+                    of items in this heap, and D(x) is the max degree any node can have in a
+                    Fibonacci heap with x nodes.
+                </para>
+                <para>
+                    For each node <c>x</c> in the root list, try to add it to <c>A[d]</c> where
+                    d is the degree of <c>x</c>.
+                    If there is already a node in <c>A[d]</c>, call it <c>y</c>, and make
+                    <c>y</c> a child of <c>x</c>. (Swap <c>x</c> and <c>y</c> beforehand if
+                    <c>x</c> is greater than <c>y</c>). Now that <c>x</c> has one more child,
+                    remove if from <c>A[d]</c> and add it to <c>A[d+1]</c> to reflect that its
+                    degree is one more. Loop this behavior until we find an empty spot to put
+                    <c>x</c>.
+                </para>
+                <para>
+                    With <c>A</c> all filled, empty the root list of the heap. And add each item
+                    from <c>A</c> into the root list, one by one, making sure to keep track of
+                    which is smallest.
+                </para>
+            </summary>
+        </member>
+        <member name="M:DataStructures.Heap.FibonacciHeap.FibonacciHeap`1.ReconstructHeap(DataStructures.Heap.FibonacciHeap.FHeapNode{`0}[])">
+            <summary>
+                Reconstructs the heap based on the array of node degrees created by the consolidate step.
+            </summary>
+            <param name="a">An array of FHeapNodes where a[i] represents a node of degree i.</param>
+        </member>
+        <member name="M:DataStructures.Heap.FibonacciHeap.FibonacciHeap`1.FibHeapLink(DataStructures.Heap.FibonacciHeap.FHeapNode{`0},DataStructures.Heap.FibonacciHeap.FHeapNode{`0})">
+            <summary>
+                Make y a child of x.
+            </summary>
+            <param name="y">A node to become the child of x.</param>
+            <param name="x">A node to become the parent of y.</param>
+        </member>
+        <member name="M:DataStructures.Heap.FibonacciHeap.FibonacciHeap`1.SiblingIterator(DataStructures.Heap.FibonacciHeap.FHeapNode{`0})">
+            <summary>
+                A helper function to iterate through all the siblings of this node in the
+                circularly doubly linked list.
+            </summary>
+            <param name="node">A node we want the siblings of.</param>
+            <returns>An iterator over all of the siblings.</returns>
+        </member>
+        <member name="T:DataStructures.Heap.MinMaxHeap`1">
+            <summary>
+                This class implements min-max heap.
+                It provides functionality of both min-heap and max-heap with the same time complexity.
+                Therefore it provides constant time retrieval and logarithmic time removal
+                of both the minimum and maximum elements in it.
+            </summary>
+            <typeparam name="T">Generic type.</typeparam>
+        </member>
+        <member name="M:DataStructures.Heap.MinMaxHeap`1.#ctor(System.Collections.Generic.IEnumerable{`0},System.Collections.Generic.IComparer{`0})">
+            <summary>
+                Initializes a new instance of the <see cref="T:DataStructures.Heap.MinMaxHeap`1" /> class that contains
+                elements copied from a specified enumerable collection and that uses a specified comparer.
+            </summary>
+            <param name="collection">The enumerable collection to be copied.</param>
+            <param name="comparer">The default comparer to use for comparing objects.</param>
+        </member>
+        <member name="P:DataStructures.Heap.MinMaxHeap`1.Comparer">
+            <summary>
+                Gets the  <see cref="T:System.Collections.Generic.IComparer`1" />. object that is used to order the values in the <see cref="T:DataStructures.Heap.MinMaxHeap`1" />.
+            </summary>
+        </member>
+        <member name="P:DataStructures.Heap.MinMaxHeap`1.Count">
+            <summary>
+                Gets the number of elements in the <see cref="T:DataStructures.Heap.MinMaxHeap`1" />.
+            </summary>
+        </member>
+        <member name="M:DataStructures.Heap.MinMaxHeap`1.Add(`0)">
+            <summary>
+                Adds an element to the heap.
+            </summary>
+            <param name="item">The element to add to the heap.</param>
+        </member>
+        <member name="M:DataStructures.Heap.MinMaxHeap`1.ExtractMax">
+            <summary>
+                Removes the maximum node from the heap and returns its value.
+            </summary>
+            <exception cref="T:System.InvalidOperationException">Thrown if heap is empty.</exception>
+            <returns>Value of the removed maximum node.</returns>
+        </member>
+        <member name="M:DataStructures.Heap.MinMaxHeap`1.ExtractMin">
+            <summary>
+                Removes the minimum node from the heap and returns its value.
+            </summary>
+            <exception cref="T:System.InvalidOperationException">Thrown if heap is empty.</exception>
+            <returns>Value of the removed minimum node.</returns>
+        </member>
+        <member name="M:DataStructures.Heap.MinMaxHeap`1.GetMax">
+            <summary>
+                Gets the maximum value in the heap, as defined by the comparer.
+            </summary>
+            <exception cref="T:System.InvalidOperationException">Thrown if heap is empty.</exception>
+            <returns>The maximum value in the heap.</returns>
+        </member>
+        <member name="M:DataStructures.Heap.MinMaxHeap`1.GetMin">
+            <summary>
+                Gets the minimum value in the heap, as defined by the comparer.
+            </summary>
+            <exception cref="T:System.InvalidOperationException">Thrown if heap is empty.</exception>
+            <returns>The minimum value in the heap.</returns>
+        </member>
+        <member name="M:DataStructures.Heap.MinMaxHeap`1.IndexOfMaxChildOrGrandchild(System.Int32)">
+            <summary>
+                Finds maximum value among children and grandchildren of the specified node.
+            </summary>
+            <param name="index">Index of the node in the Heap array.</param>
+            <returns>Index of the maximum descendant.</returns>
+        </member>
+        <member name="M:DataStructures.Heap.MinMaxHeap`1.IndexOfMinChildOrGrandchild(System.Int32)">
+            <summary>
+                Finds minumum value among children and grandchildren of the specified node.
+            </summary>
+            <param name="index">Index of the node in the Heap array.</param>
+            <returns>Index of the minimum descendant.</returns>
+        </member>
+        <member name="M:DataStructures.Heap.MinMaxHeap`1.IsMinLevelIndex(System.Int32)">
+            <summary>
+                Checks if node at index belongs to Min or Max level of the heap.
+                Root node belongs to Min level, its children - Max level,
+                its grandchildren - Min level, and so on.
+            </summary>
+            <param name="index">Index to check.</param>
+            <returns>true if index is at Min level; false if it is at Max Level.</returns>
+        </member>
+        <member name="M:DataStructures.Heap.MinMaxHeap`1.PushDown(System.Int32)">
+            <summary>
+                Assuming that children sub-trees are valid heaps, pushes node to lower levels
+                to make heap valid.
+            </summary>
+            <param name="index">Node index.</param>
+        </member>
+        <member name="M:DataStructures.Heap.MinMaxHeap`1.PushUp(System.Int32)">
+            <summary>
+                Having a new node in the heap, swaps this node with its ancestors to make heap valid.
+                For node at min level. If new node is less than its parent, then it is surely less then
+                all other nodes on max levels on path to the root of the heap. So node are pushed up, by
+                swaping with its grandparent, until they are ordered correctly.
+                For node at max level algorithm is analogical.
+            </summary>
+            <param name="index">Index of the new node.</param>
+        </member>
+        <member name="T:DataStructures.Heap.PairingHeap.PairingHeap`1">
+            <summary>
+            A pairing minMax heap implementation.
+            </summary>
+            <typeparam name="T">Base type.</typeparam>
+        </member>
+        <member name="M:DataStructures.Heap.PairingHeap.PairingHeap`1.Insert(`0)">
+            <summary>
+            Insert a new Node [O(1)].
+            </summary>
+        </member>
+        <member name="M:DataStructures.Heap.PairingHeap.PairingHeap`1.Extract">
+            <summary>
+            Get the element from heap [O(log(n))].
+            </summary>
+        </member>
+        <member name="M:DataStructures.Heap.PairingHeap.PairingHeap`1.UpdateKey(`0,`0)">
+            <summary>
+            Update heap key [O(log(n))].
+            </summary>
+        </member>
+        <member name="M:DataStructures.Heap.PairingHeap.PairingHeap`1.RebuildHeap(DataStructures.Heap.PairingHeap.PairingHeapNode{`0})">
+            <summary>
+            Rebuild heap on action [O(log(n))].
+            </summary>
+        </member>
+        <member name="T:DataStructures.Heap.PairingHeap.PairingHeapNode`1">
+            <summary>
+            Node represented the value and connections.
+            </summary>
+            <typeparam name="T">Type, supported comparing.</typeparam>
+        </member>
+        <member name="T:DataStructures.Heap.PairingHeap.PairingNodeComparer`1">
+            <summary>
+            Node comparer.
+            </summary>
+            <typeparam name="T">Node type.</typeparam>
+        </member>
+        <member name="F:DataStructures.Heap.PairingHeap.Sorting.Ascending">
+            <summary>
+            Ascending order.
+            </summary>
+        </member>
+        <member name="F:DataStructures.Heap.PairingHeap.Sorting.Descending">
+            <summary>
+            Descending order.
+            </summary>
+        </member>
+        <member name="T:DataStructures.InvertedIndex">
+             <summary>
+             Inverted index is the simplest form of document indexing,
+             allowing performing boolean queries on text data.
+            
+             This realization is just simplified for better understanding the process of indexing
+             and working on straightforward string inputs.
+             </summary>
+        </member>
+        <member name="M:DataStructures.InvertedIndex.AddToIndex(System.String,System.String)">
+            <summary>
+            Build inverted index with source name and source content.
+            </summary>
+            <param name="sourceName">Name of the source.</param>
+            <param name="sourceContent">Content of the source.</param>
+        </member>
+        <member name="M:DataStructures.InvertedIndex.And(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Returns the source names contains ALL terms inside at same time.
+            </summary>
+            <param name="terms">List of terms.</param>
+            <returns>Source names.</returns>
+        </member>
+        <member name="M:DataStructures.InvertedIndex.Or(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Returns the source names contains AT LEAST ONE from terms inside.
+            </summary>
+            <param name="terms">List of terms.</param>
+            <returns>Source names.</returns>
+        </member>
+        <member name="T:DataStructures.LinkedList.DoublyLinkedList.DoublyLinkedList`1">
+            <summary>
+                Similar to a Singly Linked List but each node contains a refenrence to the previous node in the list.
+                <see cref="T:System.Collections.Generic.LinkedList`1" /> is a doubly linked list.
+                Compared to singly linked lists it can be traversed forwards and backwards.
+                Adding a node to a doubly linked list is simpler because ever node contains a reference to the previous node.
+            </summary>
+            <typeparam name="T">Generic type.</typeparam>
+        </member>
+        <member name="M:DataStructures.LinkedList.DoublyLinkedList.DoublyLinkedList`1.#ctor(`0)">
+            <summary>
+                Initializes a new instance of the <see cref="T:DataStructures.LinkedList.DoublyLinkedList.DoublyLinkedList`1" /> class.
+            </summary>
+            <param name="data"> Data of the original head of the list.</param>
+        </member>
+        <member name="M:DataStructures.LinkedList.DoublyLinkedList.DoublyLinkedList`1.#ctor(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+                Initializes a new instance of the <see cref="T:DataStructures.LinkedList.DoublyLinkedList.DoublyLinkedList`1" /> class from an enumerable.
+            </summary>
+            <param name="data"> Enumerable of data to be stored in the list.</param>
+        </member>
+        <member name="P:DataStructures.LinkedList.DoublyLinkedList.DoublyLinkedList`1.Count">
+            <summary>
+                Gets the amount of nodes in the list.
+            </summary>
+        </member>
+        <member name="P:DataStructures.LinkedList.DoublyLinkedList.DoublyLinkedList`1.Head">
+            <summary>
+                Gets or sets the first node of the list.
+            </summary>
+        </member>
+        <member name="P:DataStructures.LinkedList.DoublyLinkedList.DoublyLinkedList`1.Tail">
+            <summary>
+                Gets or sets the last node of the list.
+            </summary>
+        </member>
+        <member name="M:DataStructures.LinkedList.DoublyLinkedList.DoublyLinkedList`1.AddHead(`0)">
+            <summary>
+                Replaces the Head of the list with the new value.
+            </summary>
+            <param name="data"> Value for the new Head of the list.</param>
+            <returns>The new Head node.</returns>
+        </member>
+        <member name="M:DataStructures.LinkedList.DoublyLinkedList.DoublyLinkedList`1.Add(`0)">
+            <summary>
+                Adds a new value at the end of the list.
+            </summary>
+            <param name="data"> New value to be added to the list.</param>
+            <returns>The new node created based on the new value.</returns>
+        </member>
+        <member name="M:DataStructures.LinkedList.DoublyLinkedList.DoublyLinkedList`1.AddAfter(`0,DataStructures.LinkedList.DoublyLinkedList.DoublyLinkedListNode{`0})">
+            <summary>
+                Adds a new value after an existing node.
+            </summary>
+            <param name="data"> New value to be added to the list.</param>
+            <param name="existingNode"> An existing node in the list.</param>
+            <returns>The new node created based on the new value.</returns>
+        </member>
+        <member name="M:DataStructures.LinkedList.DoublyLinkedList.DoublyLinkedList`1.GetData">
+            <summary>
+                Gets an enumerable based on the data in the list.
+            </summary>
+            <returns>The data in the list in an IEnumerable. It can used to create a list or an array with LINQ.</returns>
+        </member>
+        <member name="M:DataStructures.LinkedList.DoublyLinkedList.DoublyLinkedList`1.GetDataReversed">
+            <summary>
+                Gets an enumerable based on the data in the list reversed.
+            </summary>
+            <returns>The data in the list in an IEnumerable. It can used to create a list or an array with LINQ.</returns>
+        </member>
+        <member name="M:DataStructures.LinkedList.DoublyLinkedList.DoublyLinkedList`1.Reverse">
+            <summary>
+                Reverses the list. Because of how doubly linked list are structured this is not a complex action.
+            </summary>
+        </member>
+        <member name="M:DataStructures.LinkedList.DoublyLinkedList.DoublyLinkedList`1.Find(`0)">
+            <summary>
+                Looks for a node in the list that contains the value of the parameter.
+            </summary>
+            <param name="data"> Value to be looked for in a node.</param>
+            <returns>The node in the list the has the paramater as a value or null if not found.</returns>
+        </member>
+        <member name="M:DataStructures.LinkedList.DoublyLinkedList.DoublyLinkedList`1.GetAt(System.Int32)">
+            <summary>
+                Looks for a node in the list that contains the value of the parameter.
+            </summary>
+            <param name="position"> Position in the list.</param>
+            <returns>The node in the list the has the paramater as a value or null if not found.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">Thrown when position is negative or out range of the list.</exception>
+        </member>
+        <member name="M:DataStructures.LinkedList.DoublyLinkedList.DoublyLinkedList`1.RemoveHead">
+            <summary>
+                Removes the Head and replaces it with the second node in the list.
+            </summary>
+        </member>
+        <member name="M:DataStructures.LinkedList.DoublyLinkedList.DoublyLinkedList`1.Remove">
+            <summary>
+                Removes the last node in the list.
+            </summary>
+        </member>
+        <member name="M:DataStructures.LinkedList.DoublyLinkedList.DoublyLinkedList`1.RemoveNode(DataStructures.LinkedList.DoublyLinkedList.DoublyLinkedListNode{`0})">
+            <summary>
+                Removes specific node.
+            </summary>
+            <param name="node"> Node to be removed.</param>
+        </member>
+        <member name="M:DataStructures.LinkedList.DoublyLinkedList.DoublyLinkedList`1.Remove(`0)">
+            <summary>
+                Removes a node that contains the data from the parameter.
+            </summary>
+            <param name="data"> Data to be removed form the list.</param>
+        </member>
+        <member name="M:DataStructures.LinkedList.DoublyLinkedList.DoublyLinkedList`1.IndexOf(`0)">
+            <summary>
+                Looks for the index of the node with the parameter as data.
+            </summary>
+            <param name="data"> Data to look for.</param>
+            <returns>Returns the index of the node if it is found or -1 if the node is not found.</returns>
+        </member>
+        <member name="M:DataStructures.LinkedList.DoublyLinkedList.DoublyLinkedList`1.Contains(`0)">
+            <summary>
+                List contains a node that has the parameter as data.
+            </summary>
+            <param name="data"> Node to be removed.</param>
+            <returns>True if the node is found. False if it isn't.</returns>
+        </member>
+        <member name="T:DataStructures.LinkedList.DoublyLinkedList.DoublyLinkedListNode`1">
+            <summary>
+                Generic node class for Doubly Linked List.
+            </summary>
+            <typeparam name="T">Generic type.</typeparam>
+        </member>
+        <member name="M:DataStructures.LinkedList.DoublyLinkedList.DoublyLinkedListNode`1.#ctor(`0)">
+            <summary>
+                Initializes a new instance of the <see cref="T:DataStructures.LinkedList.DoublyLinkedList.DoublyLinkedListNode`1" /> class.
+            </summary>
+            <param name="data">Data to be stored in this node.</param>
+        </member>
+        <member name="P:DataStructures.LinkedList.DoublyLinkedList.DoublyLinkedListNode`1.Data">
+            <summary>
+                Gets the data stored on this node.
+            </summary>
+        </member>
+        <member name="P:DataStructures.LinkedList.DoublyLinkedList.DoublyLinkedListNode`1.Next">
+            <summary>
+                Gets or sets the reference to the next node in the Doubly Linked List.
+            </summary>
+        </member>
+        <member name="P:DataStructures.LinkedList.DoublyLinkedList.DoublyLinkedListNode`1.Previous">
+            <summary>
+                Gets or sets the reference to the previous node in the Doubly Linked List.
+            </summary>
+        </member>
+        <member name="M:DataStructures.LinkedList.SinglyLinkedList.SinglyLinkedList`1.AddFirst(`0)">
+            <summary>
+                Adds new node to the start of the list,
+                time complexity: O(1),
+                space complexity: O(1).
+            </summary>
+            <param name="data">Contents of newly added node.</param>
+            <returns>Added list node.</returns>
+        </member>
+        <member name="M:DataStructures.LinkedList.SinglyLinkedList.SinglyLinkedList`1.AddLast(`0)">
+            <summary>
+                Adds new node to the end of the list,
+                time complexity: O(n),
+                space complexity: O(1),
+                where n - number of nodes in the list.
+            </summary>
+            <param name="data">Contents of newly added node.</param>
+            <returns>Added list node.</returns>
+        </member>
+        <member name="M:DataStructures.LinkedList.SinglyLinkedList.SinglyLinkedList`1.GetElementByIndex(System.Int32)">
+            <summary>
+                Returns element at index <paramref name="index" /> in the list.
+            </summary>
+            <param name="index">Index of an element to be returned.</param>
+            <returns>Element at index <paramref name="index" />.</returns>
+        </member>
+        <member name="M:DataStructures.LinkedList.SinglyLinkedList.SinglyLinkedList`1.DeleteFirst">
+            <summary>
+            Deletes the first element of the list.
+            </summary>
+            <returns> true if the operation is successul.</returns>
+        </member>
+        <member name="M:DataStructures.LinkedList.SinglyLinkedList.SinglyLinkedList`1.DeleteLast">
+            <summary>
+            Deletes the last element of the list.
+            </summary>
+            <returns> returns true if the operation is successful. </returns>
+        </member>
+        <member name="T:DataStructures.LinkedList.SkipList.SkipList`1">
+             <summary>
+             Skip list implementation that is based on the singly linked list,
+             but offers O(log n) time complexity on most operations.
+             </summary>
+             <typeparam name="TValue">The type of the values in the list.</typeparam>
+             <remarks>
+             Skip list nodes sorted by key.
+             The "skip lanes" allow searching for a node in O(log n) time on average.
+             The worst case performence is O(n) when the height of all nodes is 1 (very
+             unluckily to happen on any decent list size).
+             These two properties make the skip list an excellent data structure for
+             implementing additional operations like finding min/max value in the list,
+             finding values with the key in a given range, etc.
+            
+             Sourses:
+             - "Skip Lists: A Probabilistic Alternative to Balanced Trees" by William Pugh.
+             - https://en.wikipedia.org/wiki/Skip_list
+             - https://iq.opengenus.org/skip-list/
+             - https://medium.com/simple-computer-science/data-structures-basics-skip-list-8b8c69f9a044
+             - https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/lists/SkipList.java
+            
+             The key is hardcoded to be of type <c>int</c> to simplify the implementation,
+             but it can be easily an any generic type that implements <c>IComparable</c>.
+             </remarks>
+        </member>
+        <member name="M:DataStructures.LinkedList.SkipList.SkipList`1.#ctor(System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:DataStructures.LinkedList.SkipList.SkipList`1"/> class.
+            </summary>
+            <param name="capacity">Expected number of elements the list might contain.</param>
+        </member>
+        <member name="P:DataStructures.LinkedList.SkipList.SkipList`1.Count">
+            <summary>
+            Gets the number of elements currently in the list.
+            </summary>
+        </member>
+        <member name="P:DataStructures.LinkedList.SkipList.SkipList`1.Item(System.Int32)">
+            <summary>
+            Gets or sets the element with the specified key.
+            </summary>
+            <exception cref="T:System.Collections.Generic.KeyNotFoundException">The key is not present in the list.</exception>
+        </member>
+        <member name="M:DataStructures.LinkedList.SkipList.SkipList`1.AddOrUpdate(System.Int32,`0)">
+            <summary>
+            Adds an element with the specified key and value to the list.
+            If an element with the same key already exists, updates its value.
+            </summary>
+            <param name="key">The key of the element to add.</param>
+            <param name="value">The value of the element to add.</param>
+            <remarks>
+            Time complexity: O(log n) where n is the number of elements in the list.
+            </remarks>
+        </member>
+        <member name="M:DataStructures.LinkedList.SkipList.SkipList`1.Contains(System.Int32)">
+            <summary>
+            Returns whether a value with the given key exists in the list.
+            </summary>
+            <remarks>
+            Time complexity: O(log n) where n is the number of elements in the list.
+            </remarks>
+        </member>
+        <member name="M:DataStructures.LinkedList.SkipList.SkipList`1.Remove(System.Int32)">
+            <summary>
+            Removes the value with the given key from the list.
+            </summary>
+            <returns>
+            <c>true</c> if the value was removed; otherwise, <c>false</c>.
+            </returns>
+            <remarks>
+            Time complexity: O(log n) where n is the number of elements in the list.
+            </remarks>
+        </member>
+        <member name="M:DataStructures.LinkedList.SkipList.SkipList`1.GetValues">
+            <summary>
+            Returns an enumerator that iterates through the list.
+            </summary>
+            <remarks>
+            Order of values is the ascending order of their keys.
+            Time complexity: O(n) where n is the number of elements in the list.
+            </remarks>
+        </member>
+        <member name="M:DataStructures.LinkedList.SkipList.SkipList`1.GetSkipNodes(System.Int32)">
+            <summary>
+            Builds a list of skip nodes on each level that
+            are closest, but smaller than the given key.
+            </summary>
+            <remarks>
+            The node on level 0 will point to the node with the given key, if it exists.
+            Time complexity: O(log n) where n is the number of elements in the list.
+            </remarks>
+        </member>
+        <member name="M:DataStructures.LinkedList.SkipList.SkipList`1.GetRandomHeight">
+            <summary>
+            Determines the height of skip levels for the new node.
+            </summary>
+            <remarks>
+            Probability of the next level is 1/(2^level).
+            </remarks>
+        </member>
+        <member name="M:DataStructures.Probabilistic.BloomFilter`1.#ctor(System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:DataStructures.Probabilistic.BloomFilter`1"/> class. This constructor will create a Bloom Filter
+            of an optimal size with the optimal number of hashes to minimize the error rate.
+            </summary>
+            <param name="expectedNumElements">Expected number of unique elements that could be added to the filter.</param>
+        </member>
+        <member name="M:DataStructures.Probabilistic.BloomFilter`1.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:DataStructures.Probabilistic.BloomFilter`1"/> class.
+            This constructor let's you decide how large you want the filter to be as well as allowing you to specify
+            how many hashes it will use. Only use if you don't care to optimize false positivity.
+            </summary>
+            <param name="sizeBits">size in bits you want the filter to be.</param>
+            <param name="numHashes">number of hash functions to be used.</param>
+        </member>
+        <member name="M:DataStructures.Probabilistic.BloomFilter`1.Insert(`0)">
+            <summary>
+            Inserts an item into the bloom filter.
+            </summary>
+            <param name="item">The item being inserted into the Bloom Filter.</param>
+        </member>
+        <member name="M:DataStructures.Probabilistic.BloomFilter`1.Search(`0)">
+            <summary>
+            Searches the Bloom Filter to determine if the item exists in the Bloom Filter.
+            </summary>
+            <param name="item">The item being searched for in the Bloom Filter.</param>
+            <returns>true if the item has been added to the Bloom Filter, false otherwise.</returns>
+        </member>
+        <member name="M:DataStructures.Probabilistic.BloomFilter`1.GetSlots(`0)">
+            <summary>
+            Yields the appropriate slots for the given item.
+            </summary>
+            <param name="item">The item to determine the slots for.</param>
+            <returns>The slots of the filter to flip or check.</returns>
+        </member>
+        <member name="M:DataStructures.Probabilistic.CountMinSketch`1.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:DataStructures.Probabilistic.CountMinSketch`1"/> class based off dimensions
+            passed by the user.
+            </summary>
+            <param name="width">The width of the sketch.</param>
+            <param name="numHashes">The number of hashes to use in the sketch.</param>
+        </member>
+        <member name="M:DataStructures.Probabilistic.CountMinSketch`1.#ctor(System.Double,System.Double)">
+            <summary>
+            Initializes a new instance of the <see cref="T:DataStructures.Probabilistic.CountMinSketch`1"/> class based off the optimizing error rate
+            and error probability formula width = e/errorRate numHashes = ln(1.0/errorProp).
+            </summary>
+            <param name="errorRate">The amount of acceptable over counting for the sketch.</param>
+            <param name="errorProb">The probability that an item will be over counted.</param>
+        </member>
+        <member name="M:DataStructures.Probabilistic.CountMinSketch`1.Insert(`0)">
+            <summary>
+            Inserts the provided item into the sketch.
+            </summary>
+            <param name="item">Item to insert.</param>
+        </member>
+        <member name="M:DataStructures.Probabilistic.CountMinSketch`1.Query(`0)">
+            <summary>
+            Queries the count of the given item that have been inserted into the sketch.
+            </summary>
+            <param name="item">item to insert into the sketch.</param>
+            <returns>the number of times the provided item has been inserted into the sketch.</returns>
+        </member>
+        <member name="M:DataStructures.Probabilistic.HyperLogLog`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:DataStructures.Probabilistic.HyperLogLog`1"/> class.
+            </summary>
+        </member>
+        <member name="M:DataStructures.Probabilistic.HyperLogLog`1.Merge(DataStructures.Probabilistic.HyperLogLog{`0},DataStructures.Probabilistic.HyperLogLog{`0})">
+            <summary>
+            Merge's two HyperLogLog's together to form a union HLL.
+            </summary>
+            <param name="first">the first HLL.</param>
+            <param name="second">The second HLL.</param>
+            <returns>A HyperLogLog with the combined values of the two sets of registers.</returns>
+        </member>
+        <member name="M:DataStructures.Probabilistic.HyperLogLog`1.Add(`0)">
+            <summary>
+            Adds an item to the HyperLogLog.
+            </summary>
+            <param name="item">The Item to be added.</param>
+        </member>
+        <member name="M:DataStructures.Probabilistic.HyperLogLog`1.Cardinality">
+            <summary>
+            Determines the approximate cardinality of the HyperLogLog.
+            </summary>
+            <returns>the approximate cardinality.</returns>
+        </member>
+        <member name="T:DataStructures.Queue.ArrayBasedQueue`1">
+            <summary>
+                Implementation of an array based queue. FIFO style.
+            </summary>
+            <typeparam name="T">Generic Type.</typeparam>
+        </member>
+        <member name="M:DataStructures.Queue.ArrayBasedQueue`1.#ctor(System.Int32)">
+            <summary>
+                Initializes a new instance of the <see cref="T:DataStructures.Queue.ArrayBasedQueue`1" /> class.
+            </summary>
+        </member>
+        <member name="M:DataStructures.Queue.ArrayBasedQueue`1.Clear">
+            <summary>
+                Clears the queue.
+            </summary>
+        </member>
+        <member name="M:DataStructures.Queue.ArrayBasedQueue`1.Dequeue">
+            <summary>
+                Returns the first item in the queue and removes it from the queue.
+            </summary>
+            <exception cref="T:System.InvalidOperationException">Thrown if the queue is empty.</exception>
+        </member>
+        <member name="M:DataStructures.Queue.ArrayBasedQueue`1.IsEmpty">
+            <summary>
+                Returns a boolean indicating whether the queue is empty.
+            </summary>
+        </member>
+        <member name="M:DataStructures.Queue.ArrayBasedQueue`1.IsFull">
+            <summary>
+                Returns a boolean indicating whether the queue is full.
+            </summary>
+        </member>
+        <member name="M:DataStructures.Queue.ArrayBasedQueue`1.Peek">
+            <summary>
+                Returns the first item in the queue and keeps it in the queue.
+            </summary>
+            <exception cref="T:System.InvalidOperationException">Thrown if the queue is empty.</exception>
+        </member>
+        <member name="M:DataStructures.Queue.ArrayBasedQueue`1.Enqueue(`0)">
+            <summary>
+                Adds an item at the last position in the queue.
+            </summary>
+            <exception cref="T:System.InvalidOperationException">Thrown if the queue is full.</exception>
+        </member>
+        <member name="T:DataStructures.Queue.ListBasedQueue`1">
+            <summary>
+                Implementation of a list based queue. FIFO style.
+            </summary>
+            <typeparam name="T">Generic Type.</typeparam>
+        </member>
+        <member name="M:DataStructures.Queue.ListBasedQueue`1.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:DataStructures.Queue.ListBasedQueue`1" /> class.
+            </summary>
+        </member>
+        <member name="M:DataStructures.Queue.ListBasedQueue`1.Clear">
+            <summary>
+                Clears the queue.
+            </summary>
+        </member>
+        <member name="M:DataStructures.Queue.ListBasedQueue`1.Dequeue">
+            <summary>
+                Returns the first item in the queue and removes it from the queue.
+            </summary>
+            <exception cref="T:System.InvalidOperationException">Thrown if the queue is empty.</exception>
+        </member>
+        <member name="M:DataStructures.Queue.ListBasedQueue`1.IsEmpty">
+            <summary>
+                Returns a boolean indicating whether the queue is empty.
+            </summary>
+        </member>
+        <member name="M:DataStructures.Queue.ListBasedQueue`1.IsFull">
+            <summary>
+                Returns a boolean indicating whether the queue is full.
+            </summary>
+        </member>
+        <member name="M:DataStructures.Queue.ListBasedQueue`1.Peek">
+            <summary>
+                Returns the first item in the queue and keeps it in the queue.
+            </summary>
+            <exception cref="T:System.InvalidOperationException">Thrown if the queue is empty.</exception>
+        </member>
+        <member name="M:DataStructures.Queue.ListBasedQueue`1.Enqueue(`0)">
+            <summary>
+                Adds an item at the last position in the queue.
+            </summary>
+            <exception cref="T:System.InvalidOperationException">Thrown if the queue is full.</exception>
+        </member>
+        <member name="T:DataStructures.Queue.StackBasedQueue`1">
+            <summary>
+                Implementation of a stack based queue. FIFO style.
+            </summary>
+            <remarks>
+                Enqueue is O(1) and Dequeue is amortized O(1).
+            </remarks>
+            <typeparam name="T">Generic Type.</typeparam>
+        </member>
+        <member name="M:DataStructures.Queue.StackBasedQueue`1.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:DataStructures.Queue.StackBasedQueue`1" /> class.
+            </summary>
+        </member>
+        <member name="M:DataStructures.Queue.StackBasedQueue`1.Clear">
+            <summary>
+                Clears the queue.
+            </summary>
+        </member>
+        <member name="M:DataStructures.Queue.StackBasedQueue`1.Dequeue">
+            <summary>
+                Returns the first item in the queue and removes it from the queue.
+            </summary>
+            <exception cref="T:System.InvalidOperationException">Thrown if the queue is empty.</exception>
+        </member>
+        <member name="M:DataStructures.Queue.StackBasedQueue`1.IsEmpty">
+            <summary>
+                Returns a boolean indicating whether the queue is empty.
+            </summary>
+        </member>
+        <member name="M:DataStructures.Queue.StackBasedQueue`1.IsFull">
+            <summary>
+                Returns a boolean indicating whether the queue is full.
+            </summary>
+        </member>
+        <member name="M:DataStructures.Queue.StackBasedQueue`1.Peek">
+            <summary>
+                Returns the first item in the queue and keeps it in the queue.
+            </summary>
+            <exception cref="T:System.InvalidOperationException">Thrown if the queue is empty.</exception>
+        </member>
+        <member name="M:DataStructures.Queue.StackBasedQueue`1.Enqueue(`0)">
+            <summary>
+                Adds an item at the last position in the queue.
+            </summary>
+        </member>
+        <member name="T:DataStructures.RedBlackTree.RedBlackTree`1">
+            <summary>
+                A self-balancing bindary tree.
+            </summary>
+            <remarks>
+                A red-black tree is a self-balancing binary search tree (BST) that
+                stores a color with each node. A node's color can either be red or
+                black. Several properties are maintained to ensure the tree remains
+                balanced.
+                <list type="number">
+                    <item>
+                        <term>A red node does not have a red child.</term>
+                    </item>
+                    <item>
+                        <term>All null nodes are considered black.</term>
+                    </item>
+                    <item>
+                        <term>
+                            Every path from a node to its descendant leaf nodes
+                        has the same number of black nodes.
+                        </term>
+                    </item>
+                    <item>
+                        <term>(Optional) The root is always black.</term>
+                    </item>
+                </list>
+                Red-black trees are generally slightly more unbalanced than an
+                AVL tree, but insertion and deletion is generally faster.
+                See https://en.wikipedia.org/wiki/Red%E2%80%93black_tree for more information.
+            </remarks>
+            <typeparam name="TKey">Type of key for the tree.</typeparam>
+        </member>
+        <member name="P:DataStructures.RedBlackTree.RedBlackTree`1.Count">
+            <summary>
+                Gets the number of nodes in the tree.
+            </summary>
+        </member>
+        <member name="F:DataStructures.RedBlackTree.RedBlackTree`1.comparer">
+            <summary>
+                Comparer to use when comparing key values.
+            </summary>
+        </member>
+        <member name="F:DataStructures.RedBlackTree.RedBlackTree`1.root">
+            <summary>
+                Reference to the root node.
+            </summary>
+        </member>
+        <member name="M:DataStructures.RedBlackTree.RedBlackTree`1.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:DataStructures.RedBlackTree.RedBlackTree`1"/> class.
+            </summary>
+        </member>
+        <member name="M:DataStructures.RedBlackTree.RedBlackTree`1.#ctor(System.Collections.Generic.Comparer{`0})">
+            <summary>
+                Initializes a new instance of the <see cref="T:DataStructures.RedBlackTree.RedBlackTree`1"/> class
+                using the specified comparer.
+            </summary>
+            <param name="customComparer">Comparer to use when comparing keys.</param>
+        </member>
+        <member name="M:DataStructures.RedBlackTree.RedBlackTree`1.Add(`0)">
+            <summary>
+                Add a single node to the tree.
+            </summary>
+            <param name="key">Key value to add.</param>
+        </member>
+        <member name="M:DataStructures.RedBlackTree.RedBlackTree`1.AddRange(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+                Add multiple nodes to the tree.
+            </summary>
+            <param name="keys">Key values to add.</param>
+        </member>
+        <member name="M:DataStructures.RedBlackTree.RedBlackTree`1.Remove(`0)">
+            <summary>
+                Remove a node from the tree.
+            </summary>
+            <param name="key">Key value to remove.</param>
+        </member>
+        <member name="M:DataStructures.RedBlackTree.RedBlackTree`1.Contains(`0)">
+            <summary>
+                Check if given node is in the tree.
+            </summary>
+            <param name="key">Key value to search for.</param>
+            <returns>Whether or not the node is in the tree.</returns>
+        </member>
+        <member name="M:DataStructures.RedBlackTree.RedBlackTree`1.GetMin">
+            <summary>
+                Get the minimum value in the tree.
+            </summary>
+            <returns>Minimum value in tree.</returns>
+        </member>
+        <member name="M:DataStructures.RedBlackTree.RedBlackTree`1.GetMax">
+            <summary>
+                Get the maximum value in the tree.
+            </summary>
+            <returns>Maximum value in tree.</returns>
+        </member>
+        <member name="M:DataStructures.RedBlackTree.RedBlackTree`1.GetKeysInOrder">
+            <summary>
+                Get keys in order from smallest to largest as defined by the comparer.
+            </summary>
+            <returns>Keys in tree in order from smallest to largest.</returns>
+        </member>
+        <member name="M:DataStructures.RedBlackTree.RedBlackTree`1.GetKeysPreOrder">
+            <summary>
+                Get keys in the pre-order order.
+            </summary>
+            <returns>Keys in pre-order order.</returns>
+        </member>
+        <member name="M:DataStructures.RedBlackTree.RedBlackTree`1.GetKeysPostOrder">
+            <summary>
+                Get keys in the post-order order.
+            </summary>
+            <returns>Keys in the post-order order.</returns>
+        </member>
+        <member name="M:DataStructures.RedBlackTree.RedBlackTree`1.Add(DataStructures.RedBlackTree.RedBlackTreeNode{`0},`0)">
+            <summary>
+                Perform binary tree insertion.
+            </summary>
+            <param name="node">Root of subtree to search from.</param>
+            <param name="key">Key value to insert.</param>
+            <returns>Node that was added.</returns>
+        </member>
+        <member name="M:DataStructures.RedBlackTree.RedBlackTree`1.AddCase2(DataStructures.RedBlackTree.RedBlackTreeNode{`0})">
+            <summary>
+                Perform case 2 of insertion by pushing blackness down from parent.
+            </summary>
+            <param name="node">Parent of inserted node.</param>
+            <returns>Grandparent of inserted node.</returns>
+        </member>
+        <member name="M:DataStructures.RedBlackTree.RedBlackTree`1.AddCase56(DataStructures.RedBlackTree.RedBlackTreeNode{`0},System.Int32,System.Int32)">
+            <summary>
+                Perform rotations needed for cases 5 and 6 of insertion.
+            </summary>
+            <param name="node">Parent of node just inserted.</param>
+            <param name="parentDir">The side node is on of its parent.</param>
+            <param name="childDir">The side the child node is on.</param>
+        </member>
+        <member name="M:DataStructures.RedBlackTree.RedBlackTree`1.GetAddCase(DataStructures.RedBlackTree.RedBlackTreeNode{`0})">
+            <summary>
+                Determine which add case applies to inserted node.
+            </summary>
+            <param name="node">Parent of inserted node.</param>
+            <returns>Case number needed to get tree in valid state. Cases 5 and 6 are represented by 56.</returns>
+        </member>
+        <member name="M:DataStructures.RedBlackTree.RedBlackTree`1.Remove(DataStructures.RedBlackTree.RedBlackTreeNode{`0},`0)">
+            <summary>
+                Search for the node to be deleted.
+            </summary>
+            <param name="node">Node to start search from.</param>
+            <param name="key">Key to search for.</param>
+            <returns>Node to be deleted.</returns>
+        </member>
+        <member name="M:DataStructures.RedBlackTree.RedBlackTree`1.RemoveRecolor(DataStructures.RedBlackTree.RedBlackTreeNode{`0})">
+            <summary>
+                Get the tree back into a valid state after removing non-root black leaf.
+            </summary>
+            <param name="node">Non-root black leaf being removed.</param>
+        </member>
+        <member name="M:DataStructures.RedBlackTree.RedBlackTree`1.RemoveSimpleCases(DataStructures.RedBlackTree.RedBlackTreeNode{`0})">
+            <summary>
+                Simple removal cases where black height doesn't change.
+            </summary>
+            <param name="node">Node to remove.</param>
+            <returns>Non-root black leaf node or null. Null indicates that removal was performed.</returns>
+        </member>
+        <member name="M:DataStructures.RedBlackTree.RedBlackTree`1.RemoveBlackNode(DataStructures.RedBlackTree.RedBlackTreeNode{`0})">
+            <summary>
+                Node to delete is black. If it is a leaf then we need to recolor, otherwise remove it.
+            </summary>
+            <param name="node">Black node to examine.</param>
+            <returns>Node to start recoloring from. Null if deletion occurred.</returns>
+        </member>
+        <member name="M:DataStructures.RedBlackTree.RedBlackTree`1.RemoveCase3(DataStructures.RedBlackTree.RedBlackTreeNode{`0},DataStructures.RedBlackTree.RedBlackTreeNode{`0},System.Int32)">
+            <summary>
+                Perform case 3 of removal.
+            </summary>
+            <param name="node">Node that was removed.</param>
+            <param name="closeNephew">Close nephew of removed node.</param>
+            <param name="childDir">Side of parent the removed node was.</param>
+        </member>
+        <member name="M:DataStructures.RedBlackTree.RedBlackTree`1.RemoveCase4(DataStructures.RedBlackTree.RedBlackTreeNode{`0})">
+            <summary>
+                Perform case 4 of removal.
+            </summary>
+            <param name="sibling">Sibling of removed node.</param>
+        </member>
+        <member name="M:DataStructures.RedBlackTree.RedBlackTree`1.RemoveCase5(DataStructures.RedBlackTree.RedBlackTreeNode{`0},DataStructures.RedBlackTree.RedBlackTreeNode{`0},System.Int32)">
+            <summary>
+                Perform case 5 of removal.
+            </summary>
+            <param name="node">Node that was removed.</param>
+            <param name="sibling">Sibling of removed node.</param>
+            <param name="childDir">Side of parent removed node was on.</param>
+        </member>
+        <member name="M:DataStructures.RedBlackTree.RedBlackTree`1.RemoveCase6(DataStructures.RedBlackTree.RedBlackTreeNode{`0},DataStructures.RedBlackTree.RedBlackTreeNode{`0},System.Int32)">
+            <summary>
+                Perform case 6 of removal.
+            </summary>
+            <param name="node">Node that was removed.</param>
+            <param name="distantNephew">Distant nephew of removed node.</param>
+            <param name="childDir">Side of parent removed node was on.</param>
+        </member>
+        <member name="M:DataStructures.RedBlackTree.RedBlackTree`1.GetRemoveCase(DataStructures.RedBlackTree.RedBlackTreeNode{`0})">
+            <summary>
+                Determine which removal case is required.
+            </summary>
+            <param name="node">Node being removed.</param>
+            <returns>Which removal case should be performed.</returns>
+        </member>
+        <member name="M:DataStructures.RedBlackTree.RedBlackTree`1.Transplant(DataStructures.RedBlackTree.RedBlackTreeNode{`0},DataStructures.RedBlackTree.RedBlackTreeNode{`0},System.Int32)">
+            <summary>
+                Set child of node or delete leaf.
+            </summary>
+            <param name="node">Node to set child of. Set to null for root.</param>
+            <param name="child">Node to set as child.</param>
+            <param name="dir">Which side of node to place child.</param>
+        </member>
+        <member name="M:DataStructures.RedBlackTree.RedBlackTree`1.DeleteLeaf(DataStructures.RedBlackTree.RedBlackTreeNode{`0},System.Int32)">
+            <summary>
+                Delete leaf node.
+            </summary>
+            <param name="node">Parent of leaf node to delete.</param>
+            <param name="dir">Side of parent leaf is on.</param>
+        </member>
+        <member name="M:DataStructures.RedBlackTree.RedBlackTree`1.RotateLeft(DataStructures.RedBlackTree.RedBlackTreeNode{`0})">
+            <summary>
+                Perform a left (counter-clockwise) rotation.
+            </summary>
+            <param name="node">Node to rotate about.</param>
+            <returns>New node with rotation applied.</returns>
+        </member>
+        <member name="M:DataStructures.RedBlackTree.RedBlackTree`1.RotateRight(DataStructures.RedBlackTree.RedBlackTreeNode{`0})">
+            <summary>
+                Perform a right (clockwise) rotation.
+            </summary>
+            <param name="node">Node to rotate about.</param>
+            <returns>New node with rotation applied.</returns>
+        </member>
+        <member name="M:DataStructures.RedBlackTree.RedBlackTree`1.GetMin(DataStructures.RedBlackTree.RedBlackTreeNode{`0})">
+            <summary>
+                Helper function to get node instance with minimum key value
+                in the specified subtree.
+            </summary>
+            <param name="node">Node specifying root of subtree.</param>
+            <returns>Minimum value in node's subtree.</returns>
+        </member>
+        <member name="M:DataStructures.RedBlackTree.RedBlackTree`1.GetMax(DataStructures.RedBlackTree.RedBlackTreeNode{`0})">
+            <summary>
+                Helper function to get node instance with maximum key value
+                in the specified subtree.
+            </summary>
+            <param name="node">Node specifyng root of subtree.</param>
+            <returns>Maximum value in node's subtree.</returns>
+        </member>
+        <member name="T:DataStructures.RedBlackTree.NodeColor">
+            <summary>
+                Enum to represent node colors.
+            </summary>
+        </member>
+        <member name="F:DataStructures.RedBlackTree.NodeColor.Red">
+            <summary>
+                Represents red node
+            </summary>
+        </member>
+        <member name="F:DataStructures.RedBlackTree.NodeColor.Black">
+            <summary>
+                Represents black node
+            </summary>
+        </member>
+        <member name="T:DataStructures.RedBlackTree.RedBlackTreeNode`1">
+            <summary>
+                Generic class to represent nodes in an <see cref="T:DataStructures.RedBlackTree.RedBlackTree`1"/> instance.
+            </summary>
+            <typeparam name="TKey">The type of key for the node.</typeparam>
+        </member>
+        <member name="P:DataStructures.RedBlackTree.RedBlackTreeNode`1.Key">
+            <summary>
+                Gets or sets key value of node.
+            </summary>
+        </member>
+        <member name="P:DataStructures.RedBlackTree.RedBlackTreeNode`1.Color">
+            <summary>
+                Gets or sets the color of the node.
+            </summary>
+        </member>
+        <member name="P:DataStructures.RedBlackTree.RedBlackTreeNode`1.Parent">
+            <summary>
+                Gets or sets the parent of the node.
+            </summary>
+        </member>
+        <member name="P:DataStructures.RedBlackTree.RedBlackTreeNode`1.Left">
+            <summary>
+                Gets or sets left child of the node.
+            </summary>
+        </member>
+        <member name="P:DataStructures.RedBlackTree.RedBlackTreeNode`1.Right">
+            <summary>
+                Gets or sets the right child of the node.
+            </summary>
+        </member>
+        <member name="M:DataStructures.RedBlackTree.RedBlackTreeNode`1.#ctor(`0,DataStructures.RedBlackTree.RedBlackTreeNode{`0})">
+            <summary>
+             Initializes a new instance of the <see cref="T:DataStructures.RedBlackTree.RedBlackTreeNode`1"/> class.
+            </summary>
+            <param name="key">Key value for node.</param>
+            <param name="parent">Parent of node.</param>
+        </member>
+        <member name="M:DataStructures.ScapegoatTree.Extensions.FlattenTree``1(DataStructures.ScapegoatTree.Node{``0},System.Collections.Generic.List{DataStructures.ScapegoatTree.Node{``0}})">
+            <summary>
+            Flattens scapegoat tree into a list of nodes.
+            </summary>
+            <param name="root">Scapegoat tree provided as root node.</param>
+            <param name="list">An empty list.</param>
+            <typeparam name="TKey">Scapegoat tree node key type.</typeparam>
+        </member>
+        <member name="M:DataStructures.ScapegoatTree.Extensions.RebuildFromList``1(System.Collections.Generic.IList{DataStructures.ScapegoatTree.Node{``0}},System.Int32,System.Int32)">
+            <summary>
+            Rebuilds a scapegoat tree from list of nodes.
+            Use with <see cref="M:DataStructures.ScapegoatTree.Extensions.FlattenTree``1(DataStructures.ScapegoatTree.Node{``0},System.Collections.Generic.List{DataStructures.ScapegoatTree.Node{``0}})"/> method.
+            </summary>
+            <param name="list">Flattened tree.</param>
+            <param name="start">Start index.</param>
+            <param name="end">End index.</param>
+            <typeparam name="TKey">Scapegoat tree node key type.</typeparam>
+            <returns>Scapegoat tree root node.</returns>
+            <exception cref="T:System.ArgumentException">Thrown if start index is invalid.</exception>
+        </member>
+        <member name="T:DataStructures.ScapegoatTree.Node`1">
+            <summary>
+            Scapegoat tree node class.
+            </summary>
+            <typeparam name="TKey">Scapegoat tree node key type.</typeparam>
+        </member>
+        <member name="M:DataStructures.ScapegoatTree.Node`1.GetSize">
+            <summary>
+            Returns number of elements in the tree.
+            </summary>
+            <returns>Number of elements in the tree.</returns>
+        </member>
+        <member name="M:DataStructures.ScapegoatTree.Node`1.GetAlphaHeight(System.Double)">
+            <summary>
+            Gets alpha height of the current node.
+            </summary>
+            <param name="alpha">Alpha value.</param>
+            <returns>Alpha height value.</returns>
+        </member>
+        <member name="M:DataStructures.ScapegoatTree.Node`1.IsAlphaWeightBalanced(System.Double)">
+            <summary>
+            Checks if the current node is alpha weight balanced.
+            </summary>
+            <param name="a">Alpha value.</param>
+            <returns>True - if node is alpha weight balanced. If not - false.</returns>
+        </member>
+        <member name="T:DataStructures.ScapegoatTree.ScapegoatTree`1">
+            <summary>
+            A scapegoat implementation class.
+            See https://en.wikipedia.org/wiki/Scapegoat_tree for more information about scapegoat tree.
+            </summary>
+            <typeparam name="TKey">The scapegoat tree key type.</typeparam>
+        </member>
+        <member name="P:DataStructures.ScapegoatTree.ScapegoatTree`1.Alpha">
+            <summary>
+            Gets the α (alpha) value of the tree.
+            </summary>
+        </member>
+        <member name="P:DataStructures.ScapegoatTree.ScapegoatTree`1.Root">
+            <summary>
+            Gets the root node of the tree.
+            </summary>
+        </member>
+        <member name="P:DataStructures.ScapegoatTree.ScapegoatTree`1.Size">
+            <summary>
+            Gets the number of nodes in the tree.
+            </summary>
+        </member>
+        <member name="P:DataStructures.ScapegoatTree.ScapegoatTree`1.MaxSize">
+            <summary>
+            Gets the maximal value of the tree Size since the last time the tree was completely rebuilt.
+            </summary>
+        </member>
+        <member name="E:DataStructures.ScapegoatTree.ScapegoatTree`1.TreeIsUnbalanced">
+            <summary>
+            Gets an event handler which will fire when tree is being balanced.
+            </summary>
+        </member>
+        <member name="M:DataStructures.ScapegoatTree.ScapegoatTree`1.IsAlphaWeightBalanced">
+            <summary>
+            Checks if current instance of the scapegoat tree is alpha weight balanced.
+            </summary>
+            <returns>True - if tree is alpha weight balanced. Otherwise, false.</returns>
+        </member>
+        <member name="M:DataStructures.ScapegoatTree.ScapegoatTree`1.Contains(`0)">
+            <summary>
+            Check if any node in the tree has specified key value.
+            </summary>
+            <param name="key">Key value.</param>
+            <returns>Returns true if node exists, false if not.</returns>
+        </member>
+        <member name="M:DataStructures.ScapegoatTree.ScapegoatTree`1.Search(`0)">
+            <summary>
+            Searches current instance of the scapegoat tree for specified key.
+            </summary>
+            <param name="key">Key value.</param>
+            <returns>Node with the specified key or null.</returns>
+        </member>
+        <member name="M:DataStructures.ScapegoatTree.ScapegoatTree`1.Insert(`0)">
+            <summary>
+            Inserts a new key into current instance of the scapegoat tree. Rebuilds tree if it's unbalanced.
+            </summary>
+            <param name="key">Key value.</param>
+            <returns>True - if insertion is successful, false - if the key is already present in the tree.</returns>
+        </member>
+        <member name="M:DataStructures.ScapegoatTree.ScapegoatTree`1.Delete(`0)">
+            <summary>
+            Removes the specified key from the current instance of the scapegoat tree. Rebuilds tree if it's unbalanced.
+            </summary>
+            <param name="key">Key value.</param>
+            <returns>True - if key was successfully removed, false - if the key wasn't found in the tree.</returns>
+        </member>
+        <member name="M:DataStructures.ScapegoatTree.ScapegoatTree`1.Clear">
+            <summary>
+            Clears the tree.
+            </summary>
+        </member>
+        <member name="M:DataStructures.ScapegoatTree.ScapegoatTree`1.Tune(System.Double)">
+            <summary>
+            Changes <see cref="P:DataStructures.ScapegoatTree.ScapegoatTree`1.Alpha"/> value to adjust balancing.
+            </summary>
+            <param name="value">New alpha value.</param>
+        </member>
+        <member name="M:DataStructures.ScapegoatTree.ScapegoatTree`1.FindScapegoatInPath(System.Collections.Generic.Stack{DataStructures.ScapegoatTree.Node{`0}})">
+            <summary>
+            Searches for a scapegoat node in provided stack.
+            </summary>
+            <param name="path">Stack instance with nodes, starting with root node.</param>
+            <returns>Scapegoat node with its parent node. Parent can be null if scapegoat node is root node.</returns>
+            <exception cref="T:System.ArgumentException">Thrown if path stack is empty.</exception>
+            <exception cref="T:System.InvalidOperationException">Thrown if scapegoat wasn't found.</exception>
+        </member>
+        <member name="T:DataStructures.SegmentTrees.SegmentTree">
+            <summary>
+                Goal:   Data structure with which you can quickly perform queries on an array (i.e. sum of subarray)
+                and at the same time efficiently update an entry
+                or apply a distributive operation to a subarray.
+                Idea:   Preprocessing special queries
+                Hint:   The query operation HAS to be associative (in this example addition).
+            </summary>
+        </member>
+        <member name="M:DataStructures.SegmentTrees.SegmentTree.#ctor(System.Int32[])">
+            <summary>
+                Initializes a new instance of the <see cref="T:DataStructures.SegmentTrees.SegmentTree" /> class.
+                Runtime complexity: O(n) where n equals the array-length.
+            </summary>
+            <param name="arr">Array on which the queries should be made.</param>
+        </member>
+        <member name="P:DataStructures.SegmentTrees.SegmentTree.Tree">
+            <summary>Gets the segment tree array.</summary>
+        </member>
+        <member name="M:DataStructures.SegmentTrees.SegmentTree.Query(System.Int32,System.Int32)">
+            <summary>
+                Starts a query.
+                Runtime complexity: O(logN) where n equals the array-length.
+            </summary>
+            <param name="l">Left border of the query.</param>
+            <param name="r">Right border of the query.</param>
+            <returns>Sum of the subarray between <c>l</c> and <c>r</c> (including <c>l</c> and <c>r</c>).</returns>
+        </member>
+        <member name="M:DataStructures.SegmentTrees.SegmentTree.Right(System.Int32)">
+            <summary>
+                Calculates the right child of a node.
+            </summary>
+            <param name="node">Current node.</param>
+            <returns>Index of the right child.</returns>
+        </member>
+        <member name="M:DataStructures.SegmentTrees.SegmentTree.Left(System.Int32)">
+            <summary>
+                Calculates the left child of a node.
+            </summary>
+            <param name="node">Current node.</param>
+            <returns>Index of the left child.</returns>
+        </member>
+        <member name="M:DataStructures.SegmentTrees.SegmentTree.Parent(System.Int32)">
+            <summary>
+                Calculates the parent of a node.
+            </summary>
+            <param name="node">Current node.</param>
+            <returns>Index of the parent node.</returns>
+        </member>
+        <member name="M:DataStructures.SegmentTrees.SegmentTree.Query(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+                Edits a query.
+            </summary>
+            <param name="l">Left border of the query.</param>
+            <param name="r">Right border of the query.</param>
+            <param name="a">Left end of the subarray enclosed by <c>i</c>.</param>
+            <param name="b">Right end of the subarray enclosed by <c>i</c>.</param>
+            <param name="i">Current node.</param>
+            <returns>Sum of a subarray between <c>l</c> and <c>r</c> (including <c>l</c> and <c>r</c>).</returns>
+        </member>
+        <member name="T:DataStructures.SegmentTrees.SegmentTreeApply">
+            <summary>
+                This is an extension of a segment tree, which allows applying distributive operations to a subarray
+                (in this case multiplication).
+            </summary>
+        </member>
+        <member name="M:DataStructures.SegmentTrees.SegmentTreeApply.#ctor(System.Int32[])">
+            <summary>
+                Initializes a new instance of the <see cref="T:DataStructures.SegmentTrees.SegmentTreeApply" /> class.
+                Runtime complexity: O(n) where n equals the array-length.
+            </summary>
+            <param name="arr">Array on which the operations should be made.</param>
+        </member>
+        <member name="P:DataStructures.SegmentTrees.SegmentTreeApply.Operand">
+            <summary>
+                Gets an array that stores for each node an operand,
+                which must be applied to all direct and indirect child nodes of this node
+                (but not to the node itself).
+            </summary>
+        </member>
+        <member name="M:DataStructures.SegmentTrees.SegmentTreeApply.Apply(System.Int32,System.Int32,System.Int32)">
+            <summary>
+                Applies a distributive operation to a subarray defined by <c>l</c> and <c>r</c>
+                (in this case multiplication by <c>value</c>).
+                Runtime complexity: O(logN) where N equals the initial array-length.
+            </summary>
+            <param name="l">Left border of the subarray.</param>
+            <param name="r">Right border of the subarray.</param>
+            <param name="value">Value with which each element of the interval is calculated.</param>
+        </member>
+        <member name="M:DataStructures.SegmentTrees.SegmentTreeApply.Query(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+                Edits a query.
+            </summary>
+            <param name="l">Left border of the query.</param>
+            <param name="r">Right border of the query.</param>
+            <param name="a">Left end of the subarray enclosed by <c>i</c>.</param>
+            <param name="b">Right end of the subarray enclosed by <c>i</c>.</param>
+            <param name="i">Current node.</param>
+            <returns>Sum of a subarray between <c>l</c> and <c>r</c> (including <c>l</c> and <c>r</c>).</returns>
+        </member>
+        <member name="M:DataStructures.SegmentTrees.SegmentTreeApply.Apply(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+                Applies the operation.
+            </summary>
+            <param name="l">Left border of the Application.</param>
+            <param name="r">Right border of the Application.</param>
+            <param name="value">Multiplier by which the subarray is to be multiplied.</param>
+            <param name="a">Left end of the subarray enclosed by <c>i</c>.</param>
+            <param name="b">Right end of the subarray enclosed by <c>i</c>.</param>
+            <param name="i">Current node.</param>
+        </member>
+        <member name="T:DataStructures.SegmentTrees.SegmentTreeUpdate">
+            <summary>
+                This is an extension of a segment tree, which allows the update of a single element.
+            </summary>
+        </member>
+        <member name="M:DataStructures.SegmentTrees.SegmentTreeUpdate.#ctor(System.Int32[])">
+            <summary>
+                Initializes a new instance of the <see cref="T:DataStructures.SegmentTrees.SegmentTreeUpdate" /> class.
+                Runtime complexity: O(n) where n equals the array-length.
+            </summary>
+            <param name="arr">Array on which the queries should be made.</param>
+        </member>
+        <member name="M:DataStructures.SegmentTrees.SegmentTreeUpdate.Update(System.Int32,System.Int32)">
+            <summary>
+                Updates a single element of the input array.
+                Changes the leaf first and updates its parents afterwards.
+                Runtime complexity: O(logN) where N equals the initial array-length.
+            </summary>
+            <param name="node">Index of the node that should be updated.</param>
+            <param name="value">New Value of the element.</param>
+        </member>
+        <member name="M:DataStructures.SegmentTrees.SegmentTreeUpdate.Propagate(System.Int32)">
+            <summary>
+                Recalculates the value of node by its children.
+                Calls its parent to do the same.
+            </summary>
+            <param name="node">Index of current node.</param>
+        </member>
+        <member name="T:DataStructures.SortedList`1">
+            <summary>
+                Implementation of SortedList using binary search.
+            </summary>
+            <typeparam name="T">Generic Type.</typeparam>
+        </member>
+        <member name="M:DataStructures.SortedList`1.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:DataStructures.SortedList`1" /> class. Uses a Comparer.Default for type T.
+            </summary>
+        </member>
+        <member name="P:DataStructures.SortedList`1.Count">
+            <summary>
+                Gets the number of elements containing in <see cref="T:DataStructures.SortedList`1" />.
+            </summary>
+        </member>
+        <member name="M:DataStructures.SortedList`1.#ctor(System.Collections.Generic.IComparer{`0})">
+            <summary>
+                Initializes a new instance of the <see cref="T:DataStructures.SortedList`1" /> class.
+            </summary>
+            <param name="comparer">Comparer user for binary search.</param>
+        </member>
+        <member name="M:DataStructures.SortedList`1.Add(`0)">
+            <summary>
+                Adds new item to <see cref="T:DataStructures.SortedList`1" /> instance, maintaining the order.
+            </summary>
+            <param name="item">An element to insert.</param>
+        </member>
+        <member name="P:DataStructures.SortedList`1.Item(System.Int32)">
+            <summary>
+                Gets an element of <see cref="T:DataStructures.SortedList`1" /> at specified index.
+            </summary>
+            <param name="i">Index.</param>
+        </member>
+        <member name="M:DataStructures.SortedList`1.Clear">
+            <summary>
+            Removes all elements from <see cref="T:DataStructures.SortedList`1" />.
+            </summary>
+        </member>
+        <member name="M:DataStructures.SortedList`1.Contains(`0)">
+            <summary>
+            Indicates whether a <see cref="T:DataStructures.SortedList`1" /> contains a certain element.
+            </summary>
+            <param name="item">An element to search.</param>
+            <returns>true - <see cref="T:DataStructures.SortedList`1" /> contains an element, otherwise - false.</returns>
+        </member>
+        <member name="M:DataStructures.SortedList`1.TryRemove(`0)">
+            <summary>
+            Removes a certain element from <see cref="T:DataStructures.SortedList`1" />.
+            </summary>
+            <param name="item">An element to remove.</param>
+            <returns>true - element is found and removed, otherwise false.</returns>
+        </member>
+        <member name="M:DataStructures.SortedList`1.GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through the <see cref="T:DataStructures.SortedList`1" />.
+            </summary>
+            <returns>A Enumerator for the <see cref="T:DataStructures.SortedList`1" />.</returns>
+        </member>
+        <member name="M:DataStructures.SortedList`1.System#Collections#IEnumerable#GetEnumerator">
+            <inheritdoc cref="M:System.Collections.IEnumerable.GetEnumerator"/>
+        </member>
+        <member name="M:DataStructures.SortedList`1.IndexFor(`0,System.Boolean@)">
+            <summary>
+            Binary search algorithm for finding element index in <see cref="T:DataStructures.SortedList`1" />.
+            </summary>
+            <param name="item">Element.</param>
+            <param name="found">Indicates whether the equal value was found in <see cref="T:DataStructures.SortedList`1" />.</param>
+            <returns>Index for the Element.</returns>
+        </member>
+        <member name="T:DataStructures.Stack.ArrayBasedStack`1">
+            <summary>
+                Implementation of an array-based stack. LIFO style.
+            </summary>
+            <typeparam name="T">Generic Type.</typeparam>
+        </member>
+        <member name="F:DataStructures.Stack.ArrayBasedStack`1.stack">
+            <summary>
+                <see cref="T:System.Array" /> based stack.
+            </summary>
+        </member>
+        <member name="F:DataStructures.Stack.ArrayBasedStack`1.top">
+            <summary>
+                How many items are in the stack right now.
+            </summary>
+        </member>
+        <member name="M:DataStructures.Stack.ArrayBasedStack`1.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:DataStructures.Stack.ArrayBasedStack`1" /> class.
+            </summary>
+        </member>
+        <member name="M:DataStructures.Stack.ArrayBasedStack`1.#ctor(`0)">
+            <summary>
+                Initializes a new instance of the <see cref="T:DataStructures.Stack.ArrayBasedStack`1" /> class.
+            </summary>
+            <param name="item">Item to push onto the <see cref="T:DataStructures.Stack.ArrayBasedStack`1" />.</param>
+        </member>
+        <member name="M:DataStructures.Stack.ArrayBasedStack`1.#ctor(`0[])">
+            <summary>
+                Initializes a new instance of the <see cref="T:DataStructures.Stack.ArrayBasedStack`1" /> class.
+            </summary>
+            <param name="items">Items to push onto the <see cref="T:DataStructures.Stack.ArrayBasedStack`1" />.</param>
+        </member>
+        <member name="P:DataStructures.Stack.ArrayBasedStack`1.Top">
+            <summary>
+                Gets the number of elements on the <see cref="T:DataStructures.Stack.ArrayBasedStack`1" />.
+            </summary>
+        </member>
+        <member name="P:DataStructures.Stack.ArrayBasedStack`1.Capacity">
+            <summary>
+                Gets or sets the Capacity of the <see cref="T:DataStructures.Stack.ArrayBasedStack`1" />.
+            </summary>
+        </member>
+        <member name="M:DataStructures.Stack.ArrayBasedStack`1.Clear">
+            <summary>
+                Removes all items from the <see cref="T:DataStructures.Stack.ArrayBasedStack`1" />.
+            </summary>
+        </member>
+        <member name="M:DataStructures.Stack.ArrayBasedStack`1.Contains(`0)">
+            <summary>
+                Determines whether an element is in the <see cref="T:DataStructures.Stack.ArrayBasedStack`1" />.
+            </summary>
+            <param name="item">The item to locate in the <see cref="T:DataStructures.Stack.ArrayBasedStack`1" />.</param>
+            <returns>True, if the item is in the stack.</returns>
+        </member>
+        <member name="M:DataStructures.Stack.ArrayBasedStack`1.Peek">
+            <summary>
+                Returns the item at the top of the <see cref="T:DataStructures.Stack.ArrayBasedStack`1" /> without removing it.
+            </summary>
+            <returns>The item at the top of the <see cref="T:DataStructures.Stack.ArrayBasedStack`1" />.</returns>
+        </member>
+        <member name="M:DataStructures.Stack.ArrayBasedStack`1.Pop">
+            <summary>
+                Removes and returns the item at the top of the <see cref="T:DataStructures.Stack.ArrayBasedStack`1" />.
+            </summary>
+            <returns>The item removed from the top of the <see cref="T:DataStructures.Stack.ArrayBasedStack`1" />.</returns>
+        </member>
+        <member name="M:DataStructures.Stack.ArrayBasedStack`1.Push(`0)">
+            <summary>
+                Inserts an item at the top of the <see cref="T:DataStructures.Stack.ArrayBasedStack`1" />.
+            </summary>
+            <param name="item">The item to push onto the <see cref="T:DataStructures.Stack.ArrayBasedStack`1" />.</param>
+        </member>
+        <member name="T:DataStructures.Stack.ListBasedStack`1">
+            <summary>
+                Implementation of a list based stack. FILO style.
+            </summary>
+            <typeparam name="T">Generic Type.</typeparam>
+        </member>
+        <member name="F:DataStructures.Stack.ListBasedStack`1.stack">
+            <summary>
+                <see cref="T:System.Collections.Generic.List`1" /> based stack.
+            </summary>
+        </member>
+        <member name="M:DataStructures.Stack.ListBasedStack`1.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:DataStructures.Stack.ListBasedStack`1" /> class.
+            </summary>
+        </member>
+        <member name="M:DataStructures.Stack.ListBasedStack`1.#ctor(`0)">
+            <summary>
+                Initializes a new instance of the <see cref="T:DataStructures.Stack.ListBasedStack`1" /> class.
+            </summary>
+            <param name="item">Item to push onto the <see cref="T:DataStructures.Stack.ListBasedStack`1" />.</param>
+        </member>
+        <member name="M:DataStructures.Stack.ListBasedStack`1.#ctor(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+                Initializes a new instance of the <see cref="T:DataStructures.Stack.ListBasedStack`1" /> class.
+            </summary>
+            <param name="items">Items to push onto the <see cref="T:DataStructures.Stack.ListBasedStack`1" />.</param>
+        </member>
+        <member name="P:DataStructures.Stack.ListBasedStack`1.Count">
+            <summary>
+                Gets the number of elements on the <see cref="T:DataStructures.Stack.ListBasedStack`1" />.
+            </summary>
+        </member>
+        <member name="M:DataStructures.Stack.ListBasedStack`1.Clear">
+            <summary>
+                Removes all items from the <see cref="T:DataStructures.Stack.ListBasedStack`1" />.
+            </summary>
+        </member>
+        <member name="M:DataStructures.Stack.ListBasedStack`1.Contains(`0)">
+            <summary>
+                Determines whether an element is in the <see cref="T:DataStructures.Stack.ListBasedStack`1" />.
+            </summary>
+            <param name="item">The item to locate in the <see cref="T:DataStructures.Stack.ListBasedStack`1" />.</param>
+            <returns>True, if the item is in the stack.</returns>
+        </member>
+        <member name="M:DataStructures.Stack.ListBasedStack`1.Peek">
+            <summary>
+                Returns the item at the top of the <see cref="T:DataStructures.Stack.ListBasedStack`1" /> without removing it.
+            </summary>
+            <returns>The item at the top of the <see cref="T:DataStructures.Stack.ListBasedStack`1" />.</returns>
+        </member>
+        <member name="M:DataStructures.Stack.ListBasedStack`1.Pop">
+            <summary>
+                Removes and returns the item at the top of the <see cref="T:DataStructures.Stack.ListBasedStack`1" />.
+            </summary>
+            <returns>The item removed from the top of the <see cref="T:DataStructures.Stack.ListBasedStack`1" />.</returns>
+        </member>
+        <member name="M:DataStructures.Stack.ListBasedStack`1.Push(`0)">
+            <summary>
+                Inserts an item at the top of the <see cref="T:DataStructures.Stack.ListBasedStack`1" />.
+            </summary>
+            <param name="item">The item to push onto the <see cref="T:DataStructures.Stack.ListBasedStack`1" />.</param>
+        </member>
+        <member name="M:DataStructures.Stack.QueueBasedStack`1.Clear">
+            <summary>
+                Clears the stack.
+            </summary>
+        </member>
+        <member name="M:DataStructures.Stack.QueueBasedStack`1.Push(`0)">
+            <summary>
+                Adds an item on top of the stack.
+            </summary>
+            <param name="item">Item to be added on top of stack.</param>
+        </member>
+        <member name="M:DataStructures.Stack.QueueBasedStack`1.Pop">
+            <summary>
+                Removes an item from  top of the stack and returns it.
+             </summary>
+            <returns>item on top of stack.</returns>
+            <exception cref="T:System.InvalidOperationException">Throw if stack is empty.</exception>
+        </member>
+        <member name="M:DataStructures.Stack.QueueBasedStack`1.Peek">
+            <summary>
+                return an item from the top of the stack without removing it.
+            </summary>
+            <returns>item on top of the stack.</returns>
+            <exception cref="T:System.InvalidOperationException">Throw if stack is empty.</exception>
+        </member>
+        <member name="M:DataStructures.Stack.QueueBasedStack`1.Length">
+            <summary>
+                returns the count of items on the stack.
+            </summary>
+            <returns>number of items on the stack.</returns>
+        </member>
+        <member name="T:DataStructures.Timeline`1">
+            <summary>
+                A collection of <see cref="T:System.DateTime" /> and <see cref="!:TValue" />
+                sorted by <see cref="T:System.DateTime" /> field.
+            </summary>
+            <typeparam name="TValue">Value associated with a <see cref="T:System.DateTime" />.</typeparam>
+        </member>
+        <member name="F:DataStructures.Timeline`1.timeline">
+            <summary>
+                Inner collection storing the timeline events as key-tuples.
+            </summary>
+        </member>
+        <member name="M:DataStructures.Timeline`1.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:DataStructures.Timeline`1"/> class.
+            </summary>
+        </member>
+        <member name="M:DataStructures.Timeline`1.#ctor(System.DateTime,`0)">
+            <summary>
+                Initializes a new instance of the <see cref="T:DataStructures.Timeline`1"/> class populated with an initial event.
+            </summary>
+            <param name="time">The time at which the given event occurred.</param>
+            <param name="value">The event's content.</param>
+        </member>
+        <member name="M:DataStructures.Timeline`1.#ctor(System.ValueTuple{System.DateTime,`0}[])">
+            <summary>
+                Initializes a new instance of the <see cref="T:DataStructures.Timeline`1"/> class containing the provided events
+                ordered chronologically.
+            </summary>
+            <param name="timeline">The timeline to represent.</param>
+        </member>
+        <member name="P:DataStructures.Timeline`1.TimesCount">
+            <summary>
+            Gets he number of unique times within this timeline.
+            </summary>
+        </member>
+        <member name="P:DataStructures.Timeline`1.ValuesCount">
+            <summary>
+                Gets all events that has occurred in this timeline.
+            </summary>
+        </member>
+        <member name="P:DataStructures.Timeline`1.Item(System.DateTime)">
+            <summary>
+                Get all values associated with <paramref name="time" />.
+            </summary>
+            <param name="time">Time to get values for.</param>
+            <returns>Values associated with <paramref name="time" />.</returns>
+        </member>
+        <member name="P:DataStructures.Timeline`1.System#Collections#Generic#ICollection{(System#DateTimeTime,TValueValue)}#IsReadOnly">
+            <inheritdoc />
+        </member>
+        <member name="P:DataStructures.Timeline`1.Count">
+            <summary>
+                Gets the count of pairs.
+            </summary>
+        </member>
+        <member name="M:DataStructures.Timeline`1.Clear">
+            <summary>
+                Clear the timeline, removing all events.
+            </summary>
+        </member>
+        <member name="M:DataStructures.Timeline`1.CopyTo(System.ValueTuple{System.DateTime,`0}[],System.Int32)">
+            <summary>
+                Copy a value to an array.
+            </summary>
+            <param name="array">Destination array.</param>
+            <param name="arrayIndex">The start index.</param>
+        </member>
+        <member name="M:DataStructures.Timeline`1.System#Collections#Generic#ICollection{(System#DateTimeTime,TValueValue)}#Add(System.ValueTuple{System.DateTime,`0})">
+            <summary>
+                Add an event at a given time.
+            </summary>
+            <param name="item">The tuple containing the event date and value.</param>
+        </member>
+        <member name="M:DataStructures.Timeline`1.System#Collections#Generic#ICollection{(System#DateTimeTime,TValueValue)}#Contains(System.ValueTuple{System.DateTime,`0})">
+            <summary>
+                Check whether or not a event exists at a specific date in the timeline.
+            </summary>
+            <param name="item">The tuple containing the event date and value.</param>
+            <returns>True if this event exists at the given date, false otherwise.</returns>
+        </member>
+        <member name="M:DataStructures.Timeline`1.System#Collections#Generic#ICollection{(System#DateTimeTime,TValueValue)}#Remove(System.ValueTuple{System.DateTime,`0})">
+            <summary>
+                Remove an event at a specific date.
+            </summary>
+            <param name="item">The tuple containing the event date and value.</param>
+            <returns>True if the event was removed, false otherwise.</returns>
+        </member>
+        <member name="M:DataStructures.Timeline`1.System#Collections#IEnumerable#GetEnumerator">
+            <inheritdoc />
+        </member>
+        <member name="M:DataStructures.Timeline`1.System#Collections#Generic#IEnumerable{(System#DateTimeTime,TValueValue)}#GetEnumerator">
+            <inheritdoc />
+        </member>
+        <member name="M:DataStructures.Timeline`1.Equals(DataStructures.Timeline{`0})">
+            <inheritdoc />
+        </member>
+        <member name="M:DataStructures.Timeline`1.op_Equality(DataStructures.Timeline{`0},DataStructures.Timeline{`0})">
+            <summary>
+                Checks whether or not two <see cref="T:DataStructures.Timeline`1"/> are equals.
+            </summary>
+            <param name="left">The first timeline.</param>
+            <param name="right">The other timeline to be checked against the <paramref name="left"/> one.</param>
+            <returns>True if both timelines are similar, false otherwise.</returns>
+        </member>
+        <member name="M:DataStructures.Timeline`1.op_Inequality(DataStructures.Timeline{`0},DataStructures.Timeline{`0})">
+            <summary>
+                Checks whether or not two <see cref="T:DataStructures.Timeline`1"/> are not equals.
+            </summary>
+            <param name="left">The first timeline.</param>
+            <param name="right">The other timeline to be checked against the <paramref name="left"/> one.</param>
+            <returns>False if both timelines are similar, true otherwise.</returns>
+        </member>
+        <member name="M:DataStructures.Timeline`1.GetAllTimes">
+            <summary>
+                Get all <see cref="T:System.DateTime" /> of the timeline.
+            </summary>
+        </member>
+        <member name="M:DataStructures.Timeline`1.GetTimesByValue(`0)">
+            <summary>
+                Get <see cref="T:System.DateTime" /> values of the timeline that have this <paramref name="value" />.
+            </summary>
+        </member>
+        <member name="M:DataStructures.Timeline`1.GetTimesBefore(System.DateTime)">
+            <summary>
+                Get all <see cref="T:System.DateTime" /> before <paramref name="time" />.
+            </summary>
+        </member>
+        <member name="M:DataStructures.Timeline`1.GetTimesAfter(System.DateTime)">
+            <summary>
+                Get all <see cref="T:System.DateTime" /> after <paramref name="time" />.
+            </summary>
+        </member>
+        <member name="M:DataStructures.Timeline`1.GetAllValues">
+            <summary>
+                Get all <see cref="!:TValue" /> of the timeline.
+            </summary>
+        </member>
+        <member name="M:DataStructures.Timeline`1.GetValuesByTime(System.DateTime)">
+            <summary>
+                Get all <see cref="!:TValue" /> associated with <paramref name="time" />.
+            </summary>
+        </member>
+        <member name="M:DataStructures.Timeline`1.GetValuesBefore(System.DateTime)">
+            <summary>
+                Get all <see cref="!:TValue" /> before <paramref name="time" />.
+            </summary>
+        </member>
+        <member name="M:DataStructures.Timeline`1.GetValuesAfter(System.DateTime)">
+            <summary>
+                Get all <see cref="!:TValue" /> before <paramref name="time" />.
+            </summary>
+        </member>
+        <member name="M:DataStructures.Timeline`1.GetValuesByMillisecond(System.Int32)">
+            <summary>
+                Gets all values that happened at specified millisecond.
+            </summary>
+            <param name="millisecond">Value to look for.</param>
+            <returns>Array of values.</returns>
+        </member>
+        <member name="M:DataStructures.Timeline`1.GetValuesBySecond(System.Int32)">
+            <summary>
+                Gets all values that happened at specified second.
+            </summary>
+            <param name="second">Value to look for.</param>
+            <returns>Array of values.</returns>
+        </member>
+        <member name="M:DataStructures.Timeline`1.GetValuesByMinute(System.Int32)">
+            <summary>
+                Gets all values that happened at specified minute.
+            </summary>
+            <param name="minute">Value to look for.</param>
+            <returns>Array of values.</returns>
+        </member>
+        <member name="M:DataStructures.Timeline`1.GetValuesByHour(System.Int32)">
+            <summary>
+                Gets all values that happened at specified hour.
+            </summary>
+            <param name="hour">Value to look for.</param>
+            <returns>Array of values.</returns>
+        </member>
+        <member name="M:DataStructures.Timeline`1.GetValuesByDay(System.Int32)">
+            <summary>
+                Gets all values that happened at specified day.
+            </summary>
+            <param name="day">Value to look for.</param>
+            <returns>Array of values.</returns>
+        </member>
+        <member name="M:DataStructures.Timeline`1.GetValuesByTimeOfDay(System.TimeSpan)">
+            <summary>
+                Gets all values that happened at specified time of the day.
+            </summary>
+            <param name="timeOfDay">Value to look for.</param>
+            <returns>Array of values.</returns>
+        </member>
+        <member name="M:DataStructures.Timeline`1.GetValuesByDayOfWeek(System.DayOfWeek)">
+            <summary>
+                Gets all values that happened at specified day of the week.
+            </summary>
+            <param name="dayOfWeek">Value to look for.</param>
+            <returns>Array of values.</returns>
+        </member>
+        <member name="M:DataStructures.Timeline`1.GetValuesByDayOfYear(System.Int32)">
+            <summary>
+                Gets all values that happened at specified day of the year.
+            </summary>
+            <param name="dayOfYear">Value to look for.</param>
+            <returns>Array of values.</returns>
+        </member>
+        <member name="M:DataStructures.Timeline`1.GetValuesByMonth(System.Int32)">
+            <summary>
+                Gets all values that happened at specified month.
+            </summary>
+            <param name="month">Value to look for.</param>
+            <returns>Array of values.</returns>
+        </member>
+        <member name="M:DataStructures.Timeline`1.GetValuesByYear(System.Int32)">
+            <summary>
+                Gets all values that happened at specified year.
+            </summary>
+            <param name="year">Value to look for.</param>
+            <returns>Array of values.</returns>
+        </member>
+        <member name="M:DataStructures.Timeline`1.Add(System.DateTime,`0)">
+            <summary>
+                Add an event at a given <paramref name="time"/>.
+            </summary>
+            <param name="time">The date at which the event occurred.</param>
+            <param name="value">The event value.</param>
+        </member>
+        <member name="M:DataStructures.Timeline`1.Add(System.ValueTuple{System.DateTime,`0}[])">
+            <summary>
+                Add a set of <see cref="T:System.DateTime" /> and <see cref="!:TValue" /> to the timeline.
+            </summary>
+        </member>
+        <member name="M:DataStructures.Timeline`1.Add(DataStructures.Timeline{`0})">
+            <summary>
+                Append an existing timeline to this one.
+            </summary>
+        </member>
+        <member name="M:DataStructures.Timeline`1.AddNow(`0[])">
+            <summary>
+                Add a <paramref name="value" /> associated with <see cref="P:System.DateTime.Now" /> to the timeline.
+            </summary>
+        </member>
+        <member name="M:DataStructures.Timeline`1.Contains(System.DateTime,`0)">
+            <summary>
+                Check whether or not a event exists at a specific date in the timeline.
+            </summary>
+            <param name="time">The date at which the event occurred.</param>
+            <param name="value">The event value.</param>
+            <returns>True if this event exists at the given date, false otherwise.</returns>
+        </member>
+        <member name="M:DataStructures.Timeline`1.Contains(System.ValueTuple{System.DateTime,`0}[])">
+            <summary>
+                Check if timeline contains this set of value pairs.
+            </summary>
+            <param name="timeline">The events to checks.</param>
+            <returns>True if any of the events has occurred in the timeline.</returns>
+        </member>
+        <member name="M:DataStructures.Timeline`1.Contains(DataStructures.Timeline{`0})">
+            <summary>
+                Check if timeline contains any of the event of the provided <paramref name="timeline"/>.
+            </summary>
+            <param name="timeline">The events to checks.</param>
+            <returns>True if any of the events has occurred in the timeline.</returns>
+        </member>
+        <member name="M:DataStructures.Timeline`1.ContainsTime(System.DateTime[])">
+            <summary>
+                Check if timeline contains any of the time of the provided <paramref name="times"/>.
+            </summary>
+            <param name="times">The times to checks.</param>
+            <returns>True if any of the times is stored in the timeline.</returns>
+        </member>
+        <member name="M:DataStructures.Timeline`1.ContainsValue(`0[])">
+            <summary>
+                Check if timeline contains any of the event of the provided <paramref name="values"/>.
+            </summary>
+            <param name="values">The events to checks.</param>
+            <returns>True if any of the events has occurred in the timeline.</returns>
+        </member>
+        <member name="M:DataStructures.Timeline`1.Remove(System.DateTime,`0)">
+            <summary>
+                Remove an event at a specific date.
+            </summary>
+            <param name="time">The date at which the event occurred.</param>
+            <param name="value">The event value.</param>
+            <returns>True if the event was removed, false otherwise.</returns>
+        </member>
+        <member name="M:DataStructures.Timeline`1.Remove(System.ValueTuple{System.DateTime,`0}[])">
+            <summary>
+                Remove a set of value pairs from the timeline.
+            </summary>
+            <param name="timeline">An collection of all events to remove.</param>
+            <returns>Returns true if the operation completed successfully.</returns>
+        </member>
+        <member name="M:DataStructures.Timeline`1.Remove(DataStructures.Timeline{`0})">
+            <summary>
+                Remove an existing timeline from this timeline.
+            </summary>
+            <param name="timeline">An collection of all events to remove.</param>
+            <returns>Returns true if the operation completed successfully.</returns>
+        </member>
+        <member name="M:DataStructures.Timeline`1.RemoveTimes(System.DateTime[])">
+            <summary>
+                Remove a value pair from the timeline if the time is equal to <paramref name="times" />.
+            </summary>
+            <returns>Returns true if the operation completed successfully.</returns>
+        </member>
+        <member name="M:DataStructures.Timeline`1.RemoveValues(`0[])">
+            <summary>
+                Remove a value pair from the timeline if the value is equal to <paramref name="values" />.
+            </summary>
+            <returns>Returns true if the operation completed successfully.</returns>
+        </member>
+        <member name="M:DataStructures.Timeline`1.ToArray">
+            <summary>
+                Convert the timeline to an array.
+            </summary>
+            <returns>
+            The timeline as an array of tuples of (<see cref="T:System.DateTime"/>, <typeparamref name="TValue"/>).
+            </returns>
+        </member>
+        <member name="M:DataStructures.Timeline`1.ToList">
+            <summary>
+                Convert the timeline to a list.
+            </summary>
+            <returns>
+            The timeline as a list of tuples of (<see cref="T:System.DateTime"/>, <typeparamref name="TValue"/>).
+            </returns>
+        </member>
+        <member name="M:DataStructures.Timeline`1.ToDictionary">
+            <summary>
+                Convert the timeline to a dictionary.
+            </summary>
+            <returns>
+            The timeline as an dictionary of <typeparamref name="TValue"/> by <see cref="T:System.DateTime"/>.
+            </returns>
+        </member>
+        <member name="M:DataStructures.Timeline`1.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:DataStructures.Timeline`1.GetHashCode">
+            <inheritdoc />
+        </member>
+        <member name="T:DataStructures.Tries.Trie">
+            <summary>
+            A Trie is a data structure (particular case of m-ary tree) used to efficiently represent strings with common prefixes.
+            Originally posed by E. Fredkin in 1960.
+                Fredkin, Edward (Sept. 1960), "Trie Memory", Communications of the ACM 3 (9): 490-499.
+            Its name is due to retrieval because its main application is in the field of "Information Retrieval" (information retrieval).
+            </summary>
+        </member>
+        <member name="F:DataStructures.Tries.Trie.Mark">
+            <summary>
+            This character marks the end of a string.
+            </summary>
+        </member>
+        <member name="F:DataStructures.Tries.Trie.root">
+            <summary>
+            This property represents the root node of the trie.
+            </summary>
+        </member>
+        <member name="M:DataStructures.Tries.Trie.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:DataStructures.Tries.Trie"/> class. This instances was created without text strings, generating the root node of the trie, without children.
+            </summary>
+        </member>
+        <member name="M:DataStructures.Tries.Trie.#ctor(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Initializes a new instance of the <see cref="T:DataStructures.Tries.Trie"/> class. Given a set of text strings, each of those strings inserts them into the trie using the Insert (string) method.
+            </summary>
+            <param name="words">The array with text strings to insert in the trie.</param>
+        </member>
+        <member name="M:DataStructures.Tries.Trie.Insert(System.String)">
+            <summary>
+            Insert a string s to the trie. The $ mark is added to the end of the chain and then it is added, this in order to indicate the end of the chain in the trie.
+            </summary>
+            <param name="s">The string to insert into the trie.</param>
+        </member>
+        <member name="M:DataStructures.Tries.Trie.Remove(System.String)">
+            <summary>
+            Remove a text string from the trie.
+            </summary>
+            <param name="s">The text string to be removed from the trie.</param>
+        </member>
+        <member name="M:DataStructures.Tries.Trie.Find(System.String)">
+            <summary>
+            Know if a text string is in the trie.
+            </summary>
+            <param name="s">The string s that you want to know if it is in the trie.</param>
+            <returns>If the string is found, it returns true, otherwise false.</returns>
+        </member>
+        <member name="M:DataStructures.Tries.Trie.PrefixQuery(System.String,System.Int32@)">
+            <summary>
+            This method analyzes which is the longest common prefix of a string s in the trie. If the string is in the trie then it is equivalent to doing Find (s).
+            </summary>
+            <param name="s">The string for which you want to know the longest common prefix.</param>
+            <param name="index">The index to which the longest common prefix goes.</param>
+            <returns>
+            Returns the longest common prefix node found in the trie with the string s.
+            </returns>
+        </member>
+        <member name="T:DataStructures.Tries.TrieNode">
+            <summary>
+            This class represents the nodes of a trie.
+            </summary>
+        </member>
+        <member name="M:DataStructures.Tries.TrieNode.#ctor(System.Char)">
+            <summary>
+            Initializes a new instance of the <see cref="T:DataStructures.Tries.TrieNode"/> class. This instance was created with a character from the alphabet, and its parent will be null.
+            </summary>
+            <param name="value">Character of the alphabet that represents the node.</param>
+        </member>
+        <member name="M:DataStructures.Tries.TrieNode.#ctor(System.Char,DataStructures.Tries.TrieNode)">
+            <summary>
+            Initializes a new instance of the <see cref="T:DataStructures.Tries.TrieNode"/> class. This instance was created with a character from the alphabet, and its parent.
+            </summary>
+            <param name="value">Character of the alphabet that represents the node.</param>
+            <param name="parent">The parent or ancestor of the node in the trie structure.</param>
+        </member>
+        <member name="P:DataStructures.Tries.TrieNode.Children">
+            <summary>
+            Gets all the descendants of the current node.
+            </summary>
+            <value>A sorted set with all the descendants.</value>
+        </member>
+        <member name="P:DataStructures.Tries.TrieNode.Parent">
+            <summary>
+            Gets the parent or ancestor of the node in the trie structure.
+            </summary>
+            <value>A TrieNode that represent a parent.</value>
+        </member>
+        <member name="P:DataStructures.Tries.TrieNode.Value">
+            <summary>
+            Gets the character of the alphabet that represents the node.
+            </summary>
+            <value>A character of the alphabet.</value>
+        </member>
+        <member name="P:DataStructures.Tries.TrieNode.Item(System.Char)">
+            <summary>
+            Index the descendants of the current node given an alphabet character.
+            </summary>
+            <value>A TrieNode with the character c in Children.</value>
+        </member>
+        <member name="M:DataStructures.Tries.TrieNode.IsLeaf">
+            <summary>
+            Method that checks if the current node is a trie leaf.
+            </summary>
+            <returns>Returns true if the current node has no children, false otherwise.</returns>
+        </member>
+        <member name="T:DataStructures.UnrolledList.UnrolledLinkedList">
+            <summary>
+            Unrolled linked list is a linked list of small arrays,
+            all of the same size where each is so small that the insertion
+            or deletion is fast and quick, but large enough to fill the cache line.
+            </summary>
+        </member>
+        <member name="M:DataStructures.UnrolledList.UnrolledLinkedList.#ctor(System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:DataStructures.UnrolledList.UnrolledLinkedList"/> class.
+            Create a unrolled list with start chunk size.
+            </summary>
+            <param name="chunkSize">The size of signe chunk.</param>
+        </member>
+        <member name="M:DataStructures.UnrolledList.UnrolledLinkedList.Insert(System.Int32)">
+            <summary>
+            Add value to list [O(n)].
+            </summary>
+            <param name="value">The entered value.</param>
+        </member>
+        <member name="M:DataStructures.UnrolledList.UnrolledLinkedList.GetRolledItems">
+            <summary>
+            Help method. Get all list inside to check the state.
+            </summary>
+            <returns>Items from all nodes.</returns>
+        </member>
+        <member name="T:DataStructures.UnrolledList.UnrolledLinkedListNode">
+            <summary>
+            Single node with array buffer for unrolled list.
+            </summary>
+        </member>
+        <member name="M:DataStructures.UnrolledList.UnrolledLinkedListNode.Set(System.Int32,System.Int32)">
+            <summary>
+            Set new item in array buffer.
+            </summary>
+            <param name="pos">Index in array.</param>
+            <param name="val">The entered value.</param>
+            <exception cref="T:System.ArgumentException">Index is out of scope.</exception>
+        </member>
+        <member name="M:DataStructures.UnrolledList.UnrolledLinkedListNode.Get(System.Int32)">
+            <summary>
+            Get item from array buffer.
+            </summary>
+            <param name="pos">Index in array.</param>
+            <exception cref="T:System.ArgumentException">Index is out of scope.</exception>
+        </member>
+    </members>
+</doc>

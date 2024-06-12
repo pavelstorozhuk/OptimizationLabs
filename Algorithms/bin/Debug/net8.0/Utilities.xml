@@ -1,0 +1,150 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Utilities</name>
+    </assembly>
+    <members>
+        <member name="T:Utilities.Exceptions.ItemNotFoundException">
+            <summary>
+                Signs that sequence doesn't contain any items that one was looking for.
+            </summary>
+        </member>
+        <member name="M:Utilities.Extensions.DictionaryExtensions.AddMany``2(System.Collections.Generic.Dictionary{``0,``1},System.Collections.Generic.IEnumerable{System.ValueTuple{``0,``1}})">
+            <summary>
+                Adds the specified key value tuples to the dictionary.
+            </summary>
+            <param name="keys">The dictionary.</param>
+            <param name="enumerable">The collection of key value tuples to add.</param>
+            <typeparam name="TKey">The type of the keys in the dictionary.</typeparam>
+            <typeparam name="TValue">The type of the values in the dictionary.</typeparam>
+            <exception cref="T:System.ArgumentException">
+                A key from the <paramref name="enumerable"/> already exists in <paramref name="keys"/>.
+            </exception>
+        </member>
+        <member name="M:Utilities.Extensions.MatrixExtensions.Multiply(System.Double[0:,0:],System.Double[0:,0:])">
+            <summary>
+                Performs immutable dot product multiplication on source matrix to operand.
+            </summary>
+            <param name="source">Source left matrix.</param>
+            <param name="operand">Operand right matrix.</param>
+            <returns>Dot product result.</returns>
+            <exception cref="T:System.InvalidOperationException">The width of a first operand should match the height of a second.</exception>
+        </member>
+        <member name="M:Utilities.Extensions.MatrixExtensions.Copy(System.Double[0:,0:])">
+            <summary>
+                Makes a copy of a matrix. Changes to the copy should not affect the original.
+            </summary>
+            <param name="matrix">The matrix.</param>
+            <returns>A copy of the matrix.</returns>
+        </member>
+        <member name="M:Utilities.Extensions.MatrixExtensions.Transpose(System.Double[0:,0:])">
+            <summary>
+                Transposes a matrix.
+            </summary>
+            <param name="matrix">The matrix.</param>
+            <returns>The transposed matrix.</returns>
+        </member>
+        <member name="M:Utilities.Extensions.MatrixExtensions.MultiplyVector(System.Double[0:,0:],System.Double[])">
+            <summary>
+                Multiplies a matrix by a vector.
+            </summary>
+            <param name="matrix">The matrix.</param>
+            <param name="vector">The vector.</param>
+            <returns>The product of the matrix and the vector, which is a vector.</returns>
+            <exception cref="T:System.ArgumentException">Dimensions of matrix and vector do not match.</exception>
+        </member>
+        <member name="M:Utilities.Extensions.MatrixExtensions.Subtract(System.Double[0:,0:],System.Double[0:,0:])">
+            <summary>
+                Performs matrix subtraction.
+            </summary>
+            <param name="lhs">The LHS matrix.</param>
+            <param name="rhs">The RHS matrix.</param>
+            <returns>The difference of the two matrices.</returns>
+            <exception cref="T:System.ArgumentException">Dimensions of matrices do not match.</exception>
+        </member>
+        <member name="M:Utilities.Extensions.MatrixExtensions.IsEqual(System.Double[0:,0:],System.Double[0:,0:])">
+            <summary>
+                Performs an element by element comparison on both matrices.
+            </summary>
+            <param name="source">Source left matrix.</param>
+            <param name="operand">Openrand right matrix.</param>
+            <returns>true: if all elements are the same; false otherwise.</returns>
+        </member>
+        <member name="M:Utilities.Extensions.MatrixExtensions.RoundToNextInt(System.Double[0:,0:])">
+            <summary>
+                Performs a round operation on every element of the input matrix up to the neareast integer.
+            </summary>
+            <param name="source">Input matrix.</param>
+            <returns>Matrix with rounded elements.</returns>
+        </member>
+        <member name="M:Utilities.Extensions.RandomExtensions.NextVector(System.Random,System.Int32)">
+            <summary>
+                Returns a random normalized vector of the specified size.
+            </summary>
+            <param name="rand">The random number generator.</param>
+            <param name="size">The size of the vector to return.</param>
+            <returns>A random normalized vector.</returns>
+        </member>
+        <member name="M:Utilities.Extensions.VectorExtensions.Copy(System.Double[])">
+            <summary>
+                Makes a copy of a vector. Changes to the copy should not affect the original.
+            </summary>
+            <param name="vector">The vector.</param>
+            <returns>The copy.</returns>
+        </member>
+        <member name="M:Utilities.Extensions.VectorExtensions.OuterProduct(System.Double[],System.Double[])">
+            <summary>
+                Computes the outer product of two vectors.
+            </summary>
+            <param name="lhs">The LHS vector.</param>
+            <param name="rhs">The RHS vector.</param>
+            <returns>The outer product of the two vector.</returns>
+        </member>
+        <member name="M:Utilities.Extensions.VectorExtensions.Dot(System.Double[],System.Double[])">
+            <summary>
+                Computes the dot product of two vectors.
+            </summary>
+            <param name="lhs">The LHS vector.</param>
+            <param name="rhs">The RHS vector.</param>
+            <returns>The dot product of the two vector.</returns>
+            <exception cref="T:System.ArgumentException">Dimensions of vectors do not match.</exception>
+        </member>
+        <member name="M:Utilities.Extensions.VectorExtensions.Magnitude(System.Double[])">
+            <summary>
+                Computes the magnitude of a vector.
+            </summary>
+            <param name="vector">The vector.</param>
+            <returns>The magnitude.</returns>
+        </member>
+        <member name="M:Utilities.Extensions.VectorExtensions.Scale(System.Double[],System.Double)">
+            <summary>
+                Returns the scaled vector.
+            </summary>
+            <param name="vector">The vector.</param>
+            <param name="factor">Scale factor.</param>
+            <returns>The unit vector.</returns>
+        </member>
+        <member name="M:Utilities.Extensions.VectorExtensions.ToColumnVector(System.Double[])">
+            <summary>
+                Transpose 1d row vector to column vector.
+            </summary>
+            <param name="source">Input 1d vector.</param>
+            <returns>Column vector.</returns>
+        </member>
+        <member name="M:Utilities.Extensions.VectorExtensions.ToRowVector(System.Double[0:,0:])">
+            <summary>
+                Transpose column vector to 1d row vector.
+            </summary>
+            <param name="source">Input column vector.</param>
+            <returns>Row vector.</returns>
+            <exception cref="T:System.InvalidOperationException">The column vector should have only 1 element in width.</exception>
+        </member>
+        <member name="M:Utilities.Extensions.VectorExtensions.ToDiagonalMatrix(System.Double[])">
+            <summary>
+                Generates a diagonal matrix from an specified vector.
+            </summary>
+            <param name="vector">The input vector.</param>
+            <returns>A Diagonal matrix.</returns>
+        </member>
+    </members>
+</doc>

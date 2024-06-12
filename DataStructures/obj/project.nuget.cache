@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "/DamgsGOgSg7hIL6npViN1iYyu4AJvOZc65lPnyBLnV08DQ7B4cn4J/X+9jFfXPF5Rm4BgPzBAx2lFEWToRnrQ==",
+  "success": true,
+  "projectFilePath": "/Users/pavelstorozuk/Downloads/C-Sharp-master/DataStructures/DataStructures.csproj",
+  "expectedPackageFiles": [
+    "/Users/pavelstorozuk/.nuget/packages/stylecop.analyzers/1.1.118/stylecop.analyzers.1.1.118.nupkg.sha512"
+  ],
+  "logs": []
+}

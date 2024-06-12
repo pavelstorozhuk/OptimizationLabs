@@ -1,0 +1,12 @@
+/Users/pavelstorozuk/Downloads/C-Sharp-master/Utilities/bin/Debug/net8.0/Utilities.deps.json
+/Users/pavelstorozuk/Downloads/C-Sharp-master/Utilities/bin/Debug/net8.0/Utilities.dll
+/Users/pavelstorozuk/Downloads/C-Sharp-master/Utilities/bin/Debug/net8.0/Utilities.pdb
+/Users/pavelstorozuk/Downloads/C-Sharp-master/Utilities/bin/Debug/net8.0/Utilities.xml
+/Users/pavelstorozuk/Downloads/C-Sharp-master/Utilities/obj/Debug/net8.0/Utilities.GeneratedMSBuildEditorConfig.editorconfig
+/Users/pavelstorozuk/Downloads/C-Sharp-master/Utilities/obj/Debug/net8.0/Utilities.AssemblyInfoInputs.cache
+/Users/pavelstorozuk/Downloads/C-Sharp-master/Utilities/obj/Debug/net8.0/Utilities.AssemblyInfo.cs
+/Users/pavelstorozuk/Downloads/C-Sharp-master/Utilities/obj/Debug/net8.0/Utilities.csproj.CoreCompileInputs.cache
+/Users/pavelstorozuk/Downloads/C-Sharp-master/Utilities/obj/Debug/net8.0/Utilities.dll
+/Users/pavelstorozuk/Downloads/C-Sharp-master/Utilities/obj/Debug/net8.0/refint/Utilities.dll
+/Users/pavelstorozuk/Downloads/C-Sharp-master/Utilities/obj/Debug/net8.0/Utilities.pdb
+/Users/pavelstorozuk/Downloads/C-Sharp-master/Utilities/obj/Debug/net8.0/ref/Utilities.dll

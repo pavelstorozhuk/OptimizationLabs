@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "BnS9Xo+Tyk2q7W32V6WmBKDz8RBLN+LUb+vSz9RwwWuZ7LEglcImfIQ3qVpC25wgLMTABllCqeTtVsq0LO+vqw==",
+  "success": true,
+  "projectFilePath": "/Users/pavelstorozuk/Downloads/C-Sharp-master/Utilities/Utilities.csproj",
+  "expectedPackageFiles": [
+    "/Users/pavelstorozuk/.nuget/packages/stylecop.analyzers/1.1.118/stylecop.analyzers.1.1.118.nupkg.sha512"
+  ],
+  "logs": []
+}

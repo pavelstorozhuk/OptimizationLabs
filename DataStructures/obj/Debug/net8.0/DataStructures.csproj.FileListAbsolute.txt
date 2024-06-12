@@ -1,0 +1,17 @@
+/Users/pavelstorozuk/Downloads/C-Sharp-master/DataStructures/bin/Debug/net8.0/DataStructures.deps.json
+/Users/pavelstorozuk/Downloads/C-Sharp-master/DataStructures/bin/Debug/net8.0/DataStructures.dll
+/Users/pavelstorozuk/Downloads/C-Sharp-master/DataStructures/bin/Debug/net8.0/DataStructures.pdb
+/Users/pavelstorozuk/Downloads/C-Sharp-master/DataStructures/bin/Debug/net8.0/DataStructures.xml
+/Users/pavelstorozuk/Downloads/C-Sharp-master/DataStructures/bin/Debug/net8.0/Utilities.dll
+/Users/pavelstorozuk/Downloads/C-Sharp-master/DataStructures/bin/Debug/net8.0/Utilities.pdb
+/Users/pavelstorozuk/Downloads/C-Sharp-master/DataStructures/bin/Debug/net8.0/Utilities.xml
+/Users/pavelstorozuk/Downloads/C-Sharp-master/DataStructures/obj/Debug/net8.0/DataStructures.csproj.AssemblyReference.cache
+/Users/pavelstorozuk/Downloads/C-Sharp-master/DataStructures/obj/Debug/net8.0/DataStructures.GeneratedMSBuildEditorConfig.editorconfig
+/Users/pavelstorozuk/Downloads/C-Sharp-master/DataStructures/obj/Debug/net8.0/DataStructures.AssemblyInfoInputs.cache
+/Users/pavelstorozuk/Downloads/C-Sharp-master/DataStructures/obj/Debug/net8.0/DataStructures.AssemblyInfo.cs
+/Users/pavelstorozuk/Downloads/C-Sharp-master/DataStructures/obj/Debug/net8.0/DataStructures.csproj.CoreCompileInputs.cache
+/Users/pavelstorozuk/Downloads/C-Sharp-master/DataStructures/obj/Debug/net8.0/DataStructures.csproj.CopyComplete
+/Users/pavelstorozuk/Downloads/C-Sharp-master/DataStructures/obj/Debug/net8.0/DataStructures.dll
+/Users/pavelstorozuk/Downloads/C-Sharp-master/DataStructures/obj/Debug/net8.0/refint/DataStructures.dll
+/Users/pavelstorozuk/Downloads/C-Sharp-master/DataStructures/obj/Debug/net8.0/DataStructures.pdb
+/Users/pavelstorozuk/Downloads/C-Sharp-master/DataStructures/obj/Debug/net8.0/ref/DataStructures.dll
